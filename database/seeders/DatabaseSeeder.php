@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Create 10 random newsletters and 15 random articles
+        \App\Models\Newsletter::factory(10)->create();
+        \App\Models\Article::factory(15)->create();
     }
 }
