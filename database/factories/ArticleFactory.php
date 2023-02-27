@@ -17,8 +17,8 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            // Will generate a number from 1 - 10. For now, we will generate 10 newsletters when seeding.
-            'NewsletterID' => $this->faker->numberBetween(1, 10),
+            // Will generate a random number from 1 to the value configured for NEWSLETTER_NUM_MAX
+            'NewsletterID' => $this->faker->numberBetween(1, env('NEWSLETTER_NUM_MAX', 10)),
 
             // Using a random company for the Title column
             'Title' => $this->faker->company(),

@@ -19,8 +19,8 @@ class NewsletterFactory extends Factory
         return [
             'Logo' => $this->faker->imageUrl(),
 
-            // A random unique newsletter number will be between 1 - 10
-            'Number' => $this->faker->unique()->numberBetween(1, 10),
+            // A random unique newsletter number will be between 1 and the value configured for NEWSLETTER_NUM_MAX
+            'Number' => $this->faker->unique()->numberBetween(1, env('NEWSLETTER_NUM_MAX', 10)),
             'Date' => $this->faker->date(),
             'Title' => $this->faker->company(),
             'IsActive' => $this->faker->boolean()

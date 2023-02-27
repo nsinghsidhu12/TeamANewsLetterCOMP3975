@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Create 10 random newsletters and 15 random articles
-        \App\Models\Newsletter::factory(10)->create();
-        \App\Models\Article::factory(15)->create();
+        // Create random newsletters and articles using the values from the .env file or the default values of 10 and 20
+        \App\Models\Newsletter::factory(env('NEWSLETTER_NUM_MAX', 10))->create();
+        \App\Models\Article::factory(env('ARTICLE_NUM_MAX', 20))->create();
     }
 }
