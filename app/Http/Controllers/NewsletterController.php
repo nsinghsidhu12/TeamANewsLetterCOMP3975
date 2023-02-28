@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Newsletter;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class NewsletterController extends Controller
 {
@@ -12,7 +13,8 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        //
+        $data = Newsletter::all();
+        return view("newsletters.index", ['newsletters' => $data]);
     }
 
     /**
