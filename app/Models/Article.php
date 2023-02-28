@@ -12,11 +12,18 @@ class Article extends Model
     // Disabling the created_at and updated_at columns for Article
     public $timestamps = false;
 
+    protected $primaryKey = 'ArticleID';
+
     // Columns to use when mass assigning data to Article
     protected $fillable = [
-        'NewsletterID',
+        'ArticleID',
         'Title',
         'Description',
         'Image'
     ];
+
+    public function newsletter()
+    {
+        return $this->belongsTo(Newsletter::class, 'NewsletterID');
+    }
 }

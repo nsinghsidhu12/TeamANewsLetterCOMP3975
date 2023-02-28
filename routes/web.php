@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Add a web route to the newsletters.index
+Route::get('newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');
+
+Route::get('newsletters/create', [NewsletterController::class, 'create'])->name('newsletters.create');
+Route::post('newsletters/store', [NewsletterController::class, 'store'])->name('newsletters.store');
+
+
+Route::get('newsletters/show/{NewsletterID}', [NewsletterController::class, 'show'])->name('newsletters.show');
+Route::get('newsletters/edit/{NewsletterID}', [NewsletterController::class, 'edit'])->name('newsletters.edit');
+Route::put('newsletters/update', [NewsletterController::class, 'update'])->name('newsletters.update');
+Route::get('newsletters/destroy/{NewsletterID}', [NewsletterController::class, 'destroy'])->name('newsletters.destroy');
+
+// Add a web route to the articles.index
+Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
+
+Route::get('articles/create', [ArticleController::class, 'create'])->name('articles.create');
+Route::post('articles/store', [ArticleController::class, 'store'])->name('articles.store');
+
+
+Route::get('articles/show/{NewsletterID}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('articles/edit/{NewsletterID}', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::put('articles/update', [ArticleController::class, 'update'])->name('articles.update');
+Route::get('articles/destroy/{NewsletterID}', [ArticleController::class, 'destroy'])->name('articles.destroy');
