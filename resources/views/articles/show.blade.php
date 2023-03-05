@@ -4,34 +4,21 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Show Article</h2>
+<article>
+    <h2 class="text-center">{{ $article->Title }}</h2>
+    <section class="row">
+        <div class="col">
+            <div class="float-start pe-4">
+                <img src={{ $article->Image }} style="width: 300px;">
+            </div>
+            <div>
+                <p>{{ $article->Description }}</p>
+            </div>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('articles.index') }}">Back</a>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Newsletter:</strong>
-            {{ $article->newsletter->Title }}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Title:</strong>
-            {{ $article->Title }}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Description:</strong>
-            {{ $article->Description }}
-        </div>
-    </div>
-</div>
+    </section>
+</article>
+
+<a class="btn btn-primary mt-5" href="{{ route('articles.index') }}">Back</a>
+
+
 @endsection
