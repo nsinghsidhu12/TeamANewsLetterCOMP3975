@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('Title', 256);
             $table->string('Description', 1024);
             $table->string('Image', 256);
+            $table->string('ImagePlacement', 128);
             $table->foreign('NewsletterID')->references('NewsletterID')->on('newsletters');
         });
     }
