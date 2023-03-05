@@ -38,7 +38,7 @@ Route::get('articles/create', [ArticleController::class, 'create'])->name('artic
 Route::post('articles/store', [ArticleController::class, 'store'])->name('articles.store');
 
 
-Route::get('articles/show/{NewsletterID}', [ArticleController::class, 'show'])->name('articles.show');
-Route::get('articles/edit/{NewsletterID}', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::get('articles/show/{ArticleID}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('articles/edit/{ArticleID}', [ArticleController::class, 'edit'])->name('articles.edit');
 Route::put('articles/update', [ArticleController::class, 'update'])->name('articles.update');
-Route::get('articles/destroy/{NewsletterID}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::get('articles/destroy/{ArticleID}', [ArticleController::class, 'destroy'])->name('articles.destroy');

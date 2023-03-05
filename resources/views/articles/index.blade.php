@@ -38,7 +38,7 @@
         <td>{{ $item->newsletter->Title }}</td>
         <td>{{ $item->Title }}</td>
         <td>{{ $item->Description }}</td>
-        <td width="5%">{{ $item->Image }}</td>
+        <td width="5%"><img src={{ $item->Image }} style="width: 150px;"></td>
         <td>
             <a class="btn btn-info" href="{{ route('articles.show',$item->ArticleID) }}">Show</a>
             <a class="btn btn-primary" href="{{ route('articles.edit',$item->ArticleID) }}">Edit</a>
