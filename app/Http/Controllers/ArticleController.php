@@ -68,7 +68,9 @@ class ArticleController extends Controller
     {
         $article = Article::find($id); // find article by id(article id)
         $article -> delete(); //implemented delete function
-        return redirect() -> route('articles.index')-> with('success','Articles was deleted successfully');
-        // redirect to articles list
+        
+        // redirect to articles list 
+        return redirect() -> route('articles.index') 
+        -> with('success','Articles was deleted successfully');
     }
 }
