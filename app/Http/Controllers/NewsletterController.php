@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Newsletter;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Output\ConsoleOutput;
+use Illuminate\Support\Facades\DB;
 
 class NewsletterController extends Controller
 {
@@ -36,9 +36,16 @@ class NewsletterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Newsletter $newsletter)
+    public function show($id)
     {
-        //
+        $data = DB::table('newsletters')
+            ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID')
+            ->select('newsletters.NewsletterID', 'newsletters.Title as NewsletterTitle', 'newsletters.Date', 'newsletters.Logo', 
+            'articles.Title as ArticleTitle', 'articles.Description', 'articles.Image', 'articles.ImagePlacement')
+            ->where('newsletters.NewsletterID', '=', $id)
+            ->get();
+
+        return view("newsletters.show", ['newsletters' => $data]);
     }
 
     /**
