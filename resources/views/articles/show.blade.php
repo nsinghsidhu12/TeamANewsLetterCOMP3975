@@ -8,9 +8,15 @@
     <h2 class="text-center">{{ $article->Title }}</h2>
     <section class="row">
         <div class="col">
-            <div class="float-start pe-4">
+            @if ($article->Image !== "None")
+                @if ($article->ImagePlacement === "Left")
+                    <div class="float-start pe-4">
+                @elseif ($article->ImagePlacement === "Right")
+                    <div class="float-end ps-4">
+                @endif
                 <img src={{ $article->Image }} style="width: 300px;">
-            </div>
+                </div>
+            @endif
             <div>
                 <p>{{ $article->Description }}</p>
             </div>
