@@ -19,7 +19,8 @@ class Article extends Model
         'ArticleID',
         'Title',
         'Description',
-        'Image'
+        'Image',
+        'ImagePlacement'
     ];
 
     public function newsletter()

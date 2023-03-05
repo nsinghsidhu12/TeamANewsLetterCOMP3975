@@ -23,7 +23,8 @@ class ArticleFactory extends Factory
             // Using a random company for the Title column
             'Title' => $this->faker->company(),
             'Description' => $this->faker->text(1024),
-            'Image' => $this->faker->imageUrl()
+            'Image' => $this->faker->randomElement([$this->faker->imageUrl(), "None"]),
+            'ImagePlacement' => $this->faker->randomElement(['Left', 'Right'])
         ];
     }
 }
