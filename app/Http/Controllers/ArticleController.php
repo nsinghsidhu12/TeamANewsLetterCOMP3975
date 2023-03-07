@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -61,16 +62,16 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $article = Article::find($id); // find article by id(article id)
         $article -> delete(); //implemented delete function
-        
-        // redirect to articles list 
-        return redirect() -> route('articles.index') 
+
+        // redirect to articles list
+        return redirect() -> route('articles.index')
         -> with('success','Articles was deleted successfully');
     }
 }
