@@ -8,3 +8,11 @@ h2 {
     text-decoration: underline;
     color: #333;
 }
+
+.btn.create {
+    margin-bottom: 1.5em
+}
+
+td .btn {
+    width: 60px
+}
