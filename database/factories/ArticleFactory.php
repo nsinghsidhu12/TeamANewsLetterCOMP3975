@@ -19,7 +19,7 @@ class ArticleFactory extends Factory
         return [
             // Will generate a random number from 1 to the value configured for NEWSLETTER_NUM_MAX
             'NewsletterID' => $this->faker->numberBetween(1, env('NEWSLETTER_NUM_MAX', 10)),
-
+            // 'Newsletter' => $this->faker->text(1024),
             // Using a random company for the Title column
             'Title' => $this->faker->company(),
             'Description' => $this->faker->text(1024),
