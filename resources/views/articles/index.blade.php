@@ -10,7 +10,7 @@
             <h2>Articles List</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('articles.create') }}"> 
+            <a class="btn btn-success create" href="{{ route('articles.create') }}"> 
                 Create New Article
             </a>
         </div>

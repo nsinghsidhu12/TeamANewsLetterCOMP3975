@@ -10,7 +10,7 @@
             <h2>Newsletters List</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('newsletters.create') }}"> 
+            <a class="btn btn-success create" href="{{ route('newsletters.create') }}"> 
                 Create New Newsletter
             </a>
         </div>
