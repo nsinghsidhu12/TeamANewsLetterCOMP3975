@@ -17,7 +17,7 @@ use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 // Add a web route to the newsletters.index
 Route::get('newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');

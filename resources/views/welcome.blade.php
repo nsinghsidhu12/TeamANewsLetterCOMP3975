@@ -1,10 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-<span style="font-size:xx-large;">Laravel with MySQL</span>
-<p>
-    <a href="{{ route('newsletters.index') }}">Newsletters</a>
-    <br/>
-    <a href="{{ route('articles.index') }}">Articles</a>
-</p>
+    <h2>Newsletter Project – Winter 2023</h2>
+    <div class="card" style="width: 18rem; margin: auto;">
+        <div class="card-header">
+            Team members
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Atsuki Uchida - ???</li>
+            <li class="list-group-item">Nhi Nguyen - A01256656</li>
+            <li class="list-group-item">Noorarjun Sidhu - ???</li>
+            <li class="list-group-item">Richard Fenton - ???</li>
+        </ul>
+    </div>
 @endsection
