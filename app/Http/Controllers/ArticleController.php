@@ -6,6 +6,9 @@ use App\Models\Article;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+
 
 class ArticleController extends Controller
 {
@@ -61,9 +64,11 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        return view('articles.edit', [
+            'article' => Article::findOrFail($id)
+        ]);
     }
 
     /**
@@ -71,7 +76,28 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        // Validation for required fields (and using some regex to validate our numeric value)
+        $request->validate([
+            'ArticleID' => 'required',
+            'Newsletter' => 'required',
+            'Title' => 'required',
+            'Description' => 'required',
+        ]); 
+        $article = Article::find($request->get('ArticleID'));
+
+        // this can be used for debugging
+        // it displays in the console
+        $output = new ConsoleOutput();
+        $output->writeln("article OBJECT: " . $article);
+
+        // Getting values from the blade template form
+        $article->Newsletter =  $request->get('Newsletter');
+        $article->Title = $request->get('Title');
+        $article->Description = $request->get('Description');
+        $article->save();
+ 
+        return redirect()->route('articles.index')
+                        ->with('success','Article updated successfully');
     }
 
     /**
