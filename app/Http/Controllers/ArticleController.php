@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -22,7 +23,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -30,7 +31,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article();
+        $article->Title = $request->input('title');
+        $article->Description = $request->input('description');
+        $article->ImagePlacement = $request->input('image_placement');
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/images');
+            $article->Image = Storage::url($imagePath);
+        }
+    
+        $article->NewsletterID = 1; // Set a value for the NewsletterID field
+    
+        $article->save();
+    
+        return redirect()->route('articles.index')->with('success', 'Article was created successfully.');
     }
 
     /**
