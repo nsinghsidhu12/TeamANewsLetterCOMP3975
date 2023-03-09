@@ -17,6 +17,7 @@ class Article extends Model
     // Columns to use when mass assigning data to Article
     protected $fillable = [
         'ArticleID',
+        // 'Newsletter',
         'Title',
         'Description',
         'Image',
