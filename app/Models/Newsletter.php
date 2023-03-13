@@ -19,7 +19,6 @@ class Newsletter extends Model
     // Columns to use when mass assigning data to Newsletter
     protected $fillable = [
         'Logo',
-        'Number',
         'Date',
         'Title',
         'IsActive'
