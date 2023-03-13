@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('newsletters', function (Blueprint $table) {
             $table->id('NewsletterID');
             $table->string('Logo', 256);
-            $table->integer('Number')->unique();
             $table->date('Date');
             $table->string('Title', 256);
             $table->boolean('IsActive');

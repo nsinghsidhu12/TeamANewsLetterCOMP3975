@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id('ArticleID');
-            $table->unsignedBigInteger('NewsletterID');
+            $table->unsignedBigInteger('NewsletterID')->nullable();
             $table->string('Title', 256);
             $table->string('Description', 1024);
-            $table->string('Image', 256);
-            $table->string('ImagePlacement', 128);
+            $table->string('Image', 256)->nullable();
+            $table->string('ImagePlacement', 128)->nullable();
             $table->foreign('NewsletterID')->references('NewsletterID')->on('newsletters');
         });
     }

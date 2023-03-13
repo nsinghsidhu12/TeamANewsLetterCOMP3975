@@ -35,13 +35,17 @@
 @foreach($articles as $item)
     <tr>
         <td>{{ $item->ArticleID }}</td>
-        <td>{{ $item->newsletter->Title }}</td>
+        @if ($item->newsletter)
+            <td>{{ $item->newsletter->Title }}</td>
+        @else
+            <td>None</td>
+        @endif
         <td>{{ $item->Title }}</td>
         <td>{{ $item->Description }}</td>
-        @if ($item->Image === "None")
-            <td>No Image</td>
-        @else
+        @if ($item->Image)
             <td width="5%"><img src={{ $item->Image }} style="width: 150px;"></td>
+        @else
+            <td>None</td>  
         @endif
         <td>
             <a class="btn btn-info" href="{{ route('articles.show',$item->ArticleID) }}">Show</a>

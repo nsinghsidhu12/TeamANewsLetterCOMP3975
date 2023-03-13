@@ -30,7 +30,7 @@
     <h2 class="text-center">{{ $item->ArticleTitle }}</h2>
     <section class="row">
         <div class="col">
-            @if ($item->Image !== "None")
+            @if ($item->Image !== null)
                 @if ($item->ImagePlacement === "Left")
                     <div class="float-start pe-4">
                 @elseif ($item->ImagePlacement === "Right")

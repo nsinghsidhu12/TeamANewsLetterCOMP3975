@@ -18,12 +18,12 @@ class ArticleFactory extends Factory
     {
         return [
             // Will generate a random number from 1 to the value configured for NEWSLETTER_NUM_MAX
-            'NewsletterID' => $this->faker->numberBetween(1, env('NEWSLETTER_NUM_MAX', 10)),
+            'NewsletterID' => $this->faker->optional(0.85)->numberBetween(1, env('NEWSLETTER_NUM_MAX', 10)),
 
             // Using a random company for the Title column
             'Title' => $this->faker->company(),
             'Description' => $this->faker->text(1024),
-            'Image' => $this->faker->randomElement([$this->faker->imageUrl(), "None"]),
+            'Image' => $this->faker->optional(0.85)->imageUrl(),
             'ImagePlacement' => $this->faker->randomElement(['Left', 'Right'])
         ];
     }
