@@ -10,11 +10,11 @@
         <div class="col">
             @if ($article->Image)
                 @if ($article->ImagePlacement === "Left")
-                    <div class="float-start pe-4">
+                    <div class="float-start pe-4" style="width: 20%;">
                 @elseif ($article->ImagePlacement === "Right")
-                    <div class="float-end ps-4">
+                    <div class="float-end ps-4" style="width: 20%;">
                 @endif
-                <img src={{ $article->Image }} style="width: 300px;">
+                <img src={{ $article->Image }} style="max-width: 100%;">
                 </div>
             @endif
             <div>
@@ -24,7 +24,7 @@
     </section>
 </article>
 
-<a class="btn btn-primary mt-5" href="{{ route('articles.index') }}">Back</a>
+<a class="btn btn-primary mt-5" href="{{ URL::previous() }}">Back</a>
 
 
 @endsection
