@@ -31,7 +31,7 @@ class Newsletter extends Model
             'NewsletterID' => (int) $this->NewsletterID,
             'Date' => $this->Date,
             'Title' =>  $this->Title,
-            'Description' => $this->Description
+            'IsActive' => (bool) $this->IsActive
         ];
     }
 }

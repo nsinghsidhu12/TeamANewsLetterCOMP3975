@@ -14,8 +14,8 @@ class SearchController extends Controller
             $newsletters = Newsletter::search($request->search)->get();
             $articles = Article::search($request->search)->get();
         } else {
-            $newsletters = null;
-            $articles = null;
+            $newsletters = Newsletter::all();
+            $articles = Article::all();
         }
 
         return view('search.index', ['newsletters' => $newsletters, 'articles' => $articles]);

@@ -36,7 +36,7 @@ class Article extends Model
             'ArticleID' => (int) $this->ArticleID,
             'NewsletterID' => (int) $this->NewsletterID,
             'Title' =>  $this->Title,
-            'IsActive' => (bool) $this->IsActive
+            'Description' => $this->Description
         ];
     }
 }

@@ -24,7 +24,7 @@
     </section>
 </article>
 
-<a class="btn btn-primary mt-5" href="{{ route('articles.index') }}">Back</a>
+<a class="btn btn-primary mt-5" href="{{ URL::previous() }}">Back</a>
 
 
 @endsection

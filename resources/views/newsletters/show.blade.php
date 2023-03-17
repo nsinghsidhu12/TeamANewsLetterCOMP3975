@@ -48,7 +48,7 @@
 
 @endforeach
 
-<a class="btn btn-primary mt-5" href="{{ route('newsletters.index') }}">Back</a>
+<a class="btn btn-primary mt-5" href="{{ URL::previous() }}">Back</a>
 
 
 @endsection
