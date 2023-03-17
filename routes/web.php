@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\ArticleController;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('search', [SearchController::class, 'index'])->name('search.index');
 
 // Add a web route to the newsletters.index
 Route::get('newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');

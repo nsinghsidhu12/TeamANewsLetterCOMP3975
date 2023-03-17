@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Newsletter extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     // Disabling the created_at and updated_at columns for Newsletter
     public $timestamps = false;
@@ -23,4 +24,14 @@ class Newsletter extends Model
         'Title',
         'IsActive'
     ];
+
+    public function toSearchableArray()
+    {
+        return [
+            'NewsletterID' => (int) $this->NewsletterID,
+            'Date' => $this->Date,
+            'Title' =>  $this->Title,
+            'Description' => $this->Description
+        ];
+    }
 }
