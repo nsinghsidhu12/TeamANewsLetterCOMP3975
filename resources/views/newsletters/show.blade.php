@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col text-center">
                 <div>
-                    <img src={{ $item->Logo }} style="width: 150px;">
+                    <img src={{ $item->Logo }} style="max-width: 150px;">
                 </div>
                 <div>
                     <h1>{{ $item->NewsletterTitle }}</h1>
@@ -32,11 +32,11 @@
         <div class="col">
             @if ($item->Image !== null)
                 @if ($item->ImagePlacement === "Left")
-                    <div class="float-start pe-4">
+                    <div class="float-start pe-4" style="width: 20%;">
                 @elseif ($item->ImagePlacement === "Right")
-                    <div class="float-end ps-4">
+                    <div class="float-end ps-4" style="width: 20%;">
                 @endif
-                <img src={{ $item->Image }} style="width: 300px;">
+                <img src={{ $item->Image }} style="max-width: 100%;">
                 </div>
             @endif
             <div>
