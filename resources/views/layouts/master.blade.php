@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('home') }}">Team A</a>
+            <a class="navbar-brand" href="{{ route('dashboard') }}">Team A</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('newsletters.index') }}">Newsletters</a>
@@ -31,8 +31,17 @@
                     </li>
                 </ul>
                 <form class="d-flex" action="{{ route('search.index') }}" method="GET">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value={{ request()->get('search') }}>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        name="search" value={{ request()->get('search') }}>
                     <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+                <form class="nav-link" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-dropdown-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link>
                 </form>
             </div>
         </div>

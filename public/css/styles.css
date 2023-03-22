@@ -1,6 +1,6 @@
 h2 {
-    text-align: center; 
-    display: block; 
+    text-align: center;
+    display: block;
     margin: 0.5em auto;
 }
 
@@ -15,4 +15,9 @@ h2 {
 
 td .btn {
     width: 60px
+}
+
+.display-card {
+    padding: 2.5em;
+    margin-top: 1.5em;
 }
