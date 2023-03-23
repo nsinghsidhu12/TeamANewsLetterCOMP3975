@@ -7,11 +7,26 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 class ArticleController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+    * @OA\Get(
+    * path="/articles",
+    * tags={"Articles"},
+    * summary="Get all articles",
+    * description="Read all the articles in the database",
+    * operationId="index",
+    * @OA\Response(
+    * response=200,
+    * description="successful operation"
+    * ),
+    * @OA\Response(
+    * response=400,
+    * description="Invalid status value"
+    * )
+    * )
+    */
     public function index()
     {
         $data = Article::all();
@@ -27,7 +42,32 @@ class ArticleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\post(
+     * path="/articles/store",
+     * tags={"Articles"},
+     * summary="Create a new article",
+     * description="Create a new article",
+     * operationId="store",
+     * @OA\RequestBody(
+     * required=true,
+     * description="Pass article data",
+     * @OA\JsonContent(
+     * required={"title", "description", "image_placement"},
+     * @OA\Property(property="title", type="string", format="text", example="Article Title"),
+     * @OA\Property(property="description", type="string", format="text", example="Article Description"),
+     * @OA\Property(property="image_placement", type="string", format="text", example="left"),
+     * @OA\Property(property="image", type="string", format="binary", example="image.jpg"),
+     * ),
+     * ),
+     * @OA\Response(
+     * response=200,
+     * description="successful operation"
+     * ),
+     * @OA\Response(
+     * response=400,
+     * description="Invalid status value"
+     * )
+     * )
      */
     public function store(Request $request)
     {
@@ -49,7 +89,31 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     * path="/articles/show/{ArticleID}",
+     * tags={"Articles"},
+     * summary="Get article by id",
+     * description="Read article by id",
+     * operationId="show",
+     * @OA\Parameter(
+     * name="ArticleID",
+     * in="path",
+     * description="ID of article to return",
+     * required=true,
+     * @OA\Schema(
+     * type="integer",
+     * format="int64"
+     * )
+     * ),
+     * @OA\Response(
+     * response=200,
+     * description="successful operation"
+     * ),
+     * @OA\Response(
+     * response=400,
+     * description="Invalid status value"
+     * )
+     * )
      */
     public function show($id)
     {
@@ -59,7 +123,31 @@ class ArticleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @OA\Get(
+     * path="/articles/edit/{ArticleID}",
+     * tags={"Articles"},
+     * summary="Get article by id",
+     * description="Read article by id",
+     * operationId="edit",
+     * @OA\Parameter(
+     * name="ArticleID",
+     * in="path",
+     * description="ID of article to return",
+     * required=true,
+     * @OA\Schema(
+     * type="integer",
+     * format="int64"
+     * )
+     * ),
+     * @OA\Response(
+     * response=200,
+     * description="successful operation"
+     * ),
+     * @OA\Response(
+     * response=400,
+     * description="Invalid status value"
+     * )
+     * )
      */
     public function edit($id)
     {
@@ -69,7 +157,46 @@ class ArticleController extends Controller
     
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     * path="/articles/update/{ArticleID}",
+     * tags={"Articles"},
+     * summary="Update article by id",
+     * description="Update article by id",
+     * operationId="update",
+     * @OA\Parameter(
+     * name="ArticleID",
+     * in="path",
+     * description="ID of article to return",
+     * required=true,
+     * @OA\Schema(
+     * type="integer",
+     * format="int64"
+     * )
+     * ),
+     * @OA\RequestBody(
+     * required=true,
+     * description="Pass article data",
+     * @OA\JsonContent(
+     * required={"title", "description", "image_placement"},
+     * @OA\Property(property="title", type="string", format="text", example="Article Title"),
+     * @OA\Property(property="description", type="string", format="text", example="Article Description"),
+     * @OA\Property(property="image_placement", type="string", format="text", example="left"),
+     * @OA\Property(property="image", type="string", format="binary", example="image.jpg"),
+     * ),
+     * ),
+     * @OA\Response(
+     * response=200,
+     * description="successful operation"
+     * ),
+     * @OA\Response(
+     * response=400,
+     * description="Invalid status value"
+     * )
+     * )
+     * @param Request $request Request
+     * @param $id ArticleID
+     * @return RedirectResponse RedirectResponse object with redirect to articles.index
+     * 
      */
     public function update(Request $request, $id)
     {
@@ -90,7 +217,31 @@ class ArticleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     * path="/articles/destroy/{ArticleID}",
+     * tags={"Articles"},
+     * summary="Delete article by id",
+     * description="Delete article by id",
+     * operationId="destroy",
+     * @OA\Parameter(
+     * name="ArticleID",
+     * in="path",
+     * description="ID of article to return",
+     * required=true,
+     * @OA\Schema(
+     * type="integer",
+     * format="int64"
+     * )
+     * ),
+     * @OA\Response(
+     * response=200,
+     * description="successful operation"
+     * ),
+     * @OA\Response(
+     * response=400,
+     * description="Invalid status value"
+     * )
+     * )
      *
      * @param $id
      * @return RedirectResponse
