@@ -237,6 +237,24 @@
                     }
                 }
             }
+        },
+        "/api/newsletters": {
+            "get": {
+                "tags": [
+                    "Newsletters"
+                ],
+                "summary": "Get the last five newsletters",
+                "description": "Get the last five newsletters",
+                "operationId": "lastFiveNewsletters",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
         }
     }
 }
