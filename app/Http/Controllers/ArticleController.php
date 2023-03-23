@@ -217,7 +217,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @OA\Delete(
+     * @OA\get(
      * path="/articles/destroy/{ArticleID}",
      * tags={"Articles"},
      * summary="Delete article by id",
