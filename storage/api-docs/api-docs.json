@@ -140,7 +140,7 @@
                 }
             }
         },
-        "/articles/update/{ArticleID}": {
+        "/articles/update/{id}": {
             "put": {
                 "tags": [
                     "Articles"
@@ -150,7 +150,7 @@
                 "operationId": "update",
                 "parameters": [
                     {
-                        "name": "ArticleID",
+                        "name": "id",
                         "in": "path",
                         "description": "ID of article to return",
                         "required": true,
@@ -253,6 +253,76 @@
                     "400": {
                         "description": "Invalid status value"
                     }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Article": {
+                "required": [
+                    "ArticleID",
+                    "NewsletterID",
+                    "Title",
+                    "Description",
+                    "Image",
+                    "ImagePlacement"
+                ],
+                "properties": {
+                    "ArticleID": {
+                        "description": "Article ID.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "NewsletterID": {
+                        "description": "Newsletter ID.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "Title": {
+                        "description": "Article title.",
+                        "type": "string",
+                        "example": "Article title"
+                    },
+                    "Description": {
+                        "description": "Article description.",
+                        "type": "string",
+                        "example": "Article description"
+                    },
+                    "Image": {
+                        "description": "Article image.",
+                        "type": "string",
+                        "example": "image.jpg"
+                    },
+                    "ImagePlacement": {
+                        "description": "Article image placement.",
+                        "type": "string",
+                        "example": "left"
+                    },
+                    "deleted_at": {
+                        "description": "Deleted at.",
+                        "format": "datetime",
+                        "readOnly": "true",
+                        "example": "2022-05-18 07:50:45"
+                    },
+                    "created_at": {
+                        "description": "Created at.",
+                        "format": "datetime",
+                        "readOnly": "true",
+                        "example": "2022-05-18 07:50:45"
+                    },
+                    "updated_at": {
+                        "description": "Updated at.",
+                        "format": "datetime",
+                        "readOnly": "true",
+                        "example": "2022-06-11 06:15:25"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Article"
                 }
             }
         }

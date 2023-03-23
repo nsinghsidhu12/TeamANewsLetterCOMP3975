@@ -123,7 +123,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @OA\get(
      * path="/articles/edit/{ArticleID}",
      * tags={"Articles"},
      * summary="Get article by id",
@@ -157,14 +157,14 @@ class ArticleController extends Controller
     
 
     /**
-     * @OA\Put(
-     * path="/articles/update/{ArticleID}",
+     * @OA\put(
+     * path="/articles/update/{id}",
      * tags={"Articles"},
      * summary="Update article by id",
      * description="Update article by id",
      * operationId="update",
      * @OA\Parameter(
-     * name="ArticleID",
+     * name="id",
      * in="path",
      * description="ID of article to return",
      * required=true,
