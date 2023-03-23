@@ -61,17 +61,32 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        return view('articles.edit', compact('article'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->Title = $request->input('title');
+        $article->Description = $request->input('description');
+        $article->ImagePlacement = $request->input('image_placement');
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/images');
+            $article->Image = Storage::url($imagePath);
+        }
+    
+    
+        $article->save();
+    
+        return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
 
     /**
