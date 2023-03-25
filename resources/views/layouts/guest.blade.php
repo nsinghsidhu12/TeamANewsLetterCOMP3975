@@ -13,9 +13,12 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     </head>
-    <body class="font-sans antialiased text-gray-900">
-        <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 dark:bg-gray-900">
+    <body class="font-sans antialiased text-gray-900 with-background">
+        <div class="flex flex-col items-center min-h-screen pt-6 with-opacity sm:justify-center sm:pt-0 dark:bg-gray-900">
             <div>
                 <a href="/">
                     <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />

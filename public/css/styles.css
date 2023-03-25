@@ -43,9 +43,11 @@ td .btn {
     width: 88px;
 }
 
-.antialiased {
+.with-background {
     background-image: url('https://media.istockphoto.com/id/1395046093/photo/3d-letter-with-completed-task-or-checklist-in-envelope-isolated-on-background-with-empty-copy.jpg?s=612x612&w=0&k=20&c=efiJo9kso6Ho_4fe1IulfV_sbX5twVXwWXmaAi83NR0=');
-    background-repeat: no-repeat;
-    background-size: auto;
     background-color: #B4DAFF;
+}
+
+.with-opacity {
+    opacity: 0.95;
 }
