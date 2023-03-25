@@ -238,13 +238,13 @@
                 }
             }
         },
-        "/api/newsletters": {
+        "/api/newsletters/lastfive": {
             "get": {
                 "tags": [
                     "Newsletters"
                 ],
-                "summary": "Get the last five newsletters",
-                "description": "Get the last five newsletters",
+                "summary": "Get the last five active newsletters",
+                "description": "Get the last five active newsletters",
                 "operationId": "lastFiveNewsletters",
                 "responses": {
                     "200": {
