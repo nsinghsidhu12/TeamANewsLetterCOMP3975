@@ -32,7 +32,7 @@ class NewsletterController extends Controller
             ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID')
             ->select('newsletters.NewsletterID')
             ->where('IsActive', '=', 1)
-            ->orderBy('newsletters.NewsletterID', 'desc')
+            ->orderBy('newsletters.Date', 'desc')
             ->distinct()
             ->take(5)
             ->get()->toArray();
@@ -56,7 +56,7 @@ class NewsletterController extends Controller
                 'articles.ImagePlacement'
             )
             ->whereIn('newsletters.NewsletterID', $myArray)
-            ->orderBy('newsletters.NewsletterID', 'desc')
+            ->orderBy('newsletters.Date', 'desc')
             ->get();
     }
 }
