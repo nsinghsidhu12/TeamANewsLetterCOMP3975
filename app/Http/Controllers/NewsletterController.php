@@ -70,7 +70,7 @@ class NewsletterController extends Controller
     public function show($id)
     {
         $data = DB::table('newsletters')
-            ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID')
+            ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID', 'left')
             ->select('newsletters.NewsletterID', 'newsletters.Title as NewsletterTitle', 'newsletters.Date', 'newsletters.Logo', 
             'articles.Title as ArticleTitle', 'articles.Description', 'articles.Image', 'articles.ImagePlacement')
             ->where('newsletters.NewsletterID', '=', $id)
