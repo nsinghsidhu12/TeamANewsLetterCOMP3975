@@ -115,7 +115,6 @@ class NewsletterController extends Controller
      */
     public function destroy(Newsletter $NewsletterID)
     {
-
         //delete the newsletter
         $NewsletterID->delete();
         return redirect('/newsletters')->with('success', 'Newsletter deleted!');
