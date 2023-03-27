@@ -42,6 +42,8 @@ class NewsletterController extends Controller
             'active' => $request->get('Active'),
             'logo' => $request->get('Logo'),
         ]);
+
+        // Newsletter::create($request->all());
         $newsletter->save();
         return redirect('/newsletters')->with('success', 'Newsletter saved!');
     }
@@ -92,14 +94,30 @@ class NewsletterController extends Controller
      */
     public function update(Request $request, Newsletter $newsletter)
     {
-        //
+        $request-> validate([
+            'NewsletterID' => 'required',
+            'Title' => 'required',
+            'Date' => 'required',
+            'Active' => 'required',
+        ]);
+        $newsletter = Newsletter::find($request->get('NewsletterID'));
+
+        $newsletter->Title = $request->get('Title');
+        $newsletter->Date = $request->get('Date');
+        $newsletter->Active = $request->get('Active');
+        $newsletter -> save();
+
+        return redirect('/newsletters')->with('success', 'Newsletter updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Newsletter $newsletter)
+    public function destroy(Newsletter $NewsletterID)
     {
-        //
+
+        //delete the newsletter
+        $NewsletterID->delete();
+        return redirect('/newsletters')->with('success', 'Newsletter deleted!');
     }
 }
