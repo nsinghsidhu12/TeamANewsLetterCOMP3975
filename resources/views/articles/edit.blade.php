@@ -40,7 +40,6 @@
         referrerpolicy="origin"></script>
     <script>
         tinymce.init({
-            forced_root_block: "",
             selector: 'textarea#description',
             plugins: 'link code',
             toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code',
