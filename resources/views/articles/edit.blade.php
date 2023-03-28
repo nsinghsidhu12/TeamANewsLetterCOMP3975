@@ -33,7 +33,7 @@
         </form>
     </div>
 
-    <a class="btn btn-secondary mt-3" href="{{ route('articles.index') }}">Cancel</a>
+    <a class="mt-3 btn btn-secondary" href="{{ route('articles.index') }}">Cancel</a>
 
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/ztgkkghs4mn1mcsmskcw6swfmfh7i2sp3l11dwv2l0qsulbr/tinymce/6/tinymce.min.js"

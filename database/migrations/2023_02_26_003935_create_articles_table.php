@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('Image', 256)->nullable();
             $table->string('ImagePlacement', 128)->nullable();
             $table->foreign('NewsletterID')->references('NewsletterID')->on('newsletters');
+        
         });
     }
 

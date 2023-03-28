@@ -22,7 +22,7 @@ class NewsletterController extends Controller
      */
     public function create()
     {
-        //
+        return view('newsletters.create');
     }
 
     /**
@@ -30,8 +30,41 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Title' => 'required',
+            'Date' => 'required',
+            'Active' => 'required',
+        ]);
+
+        $newsletter = new Newsletter([
+            'title' => $request->get('Title'),
+            'date' => $request->get('Date'),
+            'active' => $request->get('Active'),
+            'logo' => $request->get('Logo'),
+        ]);
+
+        // Newsletter::create($request->all());
+        $newsletter->save();
+        return redirect('/newsletters')->with('success', 'Newsletter saved!');
     }
+    // public function store(Request $request)
+    // {
+    //     $article = new Article();
+    //     $article->Title = $request->input('title');
+    //     $article->Description = $request->input('description');
+    //     $article->ImagePlacement = $request->input('image_placement');
+    
+    //     if ($request->hasFile('image')) {
+    //         $imagePath = $request->file('image')->store('public/images');
+    //         $article->Image = Storage::url($imagePath);
+    //     }
+    
+    //     $article->NewsletterID = 1; // Set a value for the NewsletterID field
+    
+    //     $article->save();
+    
+    //     return redirect()->route('articles.index')->with('success', 'Article was created successfully.');
+    // }
 
     /**
      * Display the specified resource.
@@ -39,7 +72,7 @@ class NewsletterController extends Controller
     public function show($id)
     {
         $data = DB::table('newsletters')
-            ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID')
+            ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID', 'left')
             ->select('newsletters.NewsletterID', 'newsletters.Title as NewsletterTitle', 'newsletters.Date', 'newsletters.Logo', 
             'articles.Title as ArticleTitle', 'articles.Description', 'articles.Image', 'articles.ImagePlacement')
             ->where('newsletters.NewsletterID', '=', $id)
@@ -51,74 +84,40 @@ class NewsletterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Newsletter $newsletter)
+    public function edit(Newsletter $id)
     {
-        //
+        return view('newsletters.edit', ['newsletter'=> $id]);
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Newsletter $newsletter)
-    {
-        //
+{
+    $request-> validate([
+        'Title' => 'required',
+        'Date' => 'required | date_format:Y-m-d',
+        'IsActive' => 'required',
+    ]);
+
+
+        $newsletter->Title = $request->get('Title');
+        $newsletter->Date = $request->get('Date');
+        $newsletter->IsActive = $request->get('IsActive'); // this is getting interger value, 0 or 1
+        $newsletter->Logo = $request->get('Logo');
+        $newsletter -> save();
+
+        return redirect('/newsletters')->with('success', 'Newsletter updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Newsletter $newsletter)
+    public function destroy(Newsletter $NewsletterID)
     {
-        //
-    }
-
-    /**
-    * @OA\Get(
-    * path="/api/newsletters",
-    * tags={"Newsletters"},
-    * summary="Get the last five newsletters",
-    * description="Get the last five newsletters",
-    * operationId="lastFiveNewsletters",
-    * @OA\Response(
-    * response=200,
-    * description="successful operation"
-    * ),
-    * @OA\Response(
-    * response=400,
-    * description="Invalid status value"
-    * )
-    * )
-    */
-    public function lastFiveNewsletters() {
-        // Get the 5 latest newsletters. Distinct as joins will cause multiple NewsletterIDs to appear and count for the take query.
-        $distinctNewsletters = DB::table('newsletters')
-            ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID')
-            ->select('newsletters.NewsletterID')
-            ->orderBy('newsletters.NewsletterID', 'desc')
-            ->distinct()
-            ->take(5)
-            ->get()->toArray();
-
-        $myArray = array();
-
-        for ($i = 0; $i < count($distinctNewsletters); $i++) {
-            array_push($myArray, $distinctNewsletters[$i]->NewsletterID);
-        }
-
-        return DB::table('newsletters')
-            ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID')
-            ->select(
-                'newsletters.NewsletterID',
-                'newsletters.Title as NewsletterTitle',
-                'newsletters.Date',
-                'newsletters.Logo',
-                'articles.Title as ArticleTitle',
-                'articles.Description',
-                'articles.Image',
-                'articles.ImagePlacement'
-            )
-            ->whereIn('newsletters.NewsletterID', $myArray)
-            ->orderBy('newsletters.NewsletterID', 'desc')
-            ->get();
+        //delete the newsletter
+        $NewsletterID->delete();
+        return redirect('/newsletters')->with('success', 'Newsletter deleted!');
     }
 }

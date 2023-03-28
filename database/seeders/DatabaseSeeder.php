@@ -12,12 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory()->create([
-            'name' => 'A User',
-            'email' => 'aa@aa.aa',
-            'password' => 'P@$$w0rd'
-        ]);
-
+        $this->call(UsersTableSeeder::class);
         // Create random newsletters and articles using the values from the .env file or the default values of 10 and 20
         \App\Models\Newsletter::factory(env('NEWSLETTER_NUM_MAX', 10))->create();
         \App\Models\Article::factory(env('ARTICLE_NUM_MAX', 20))->create();

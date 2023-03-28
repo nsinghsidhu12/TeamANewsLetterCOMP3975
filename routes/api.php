@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\api\NewsletterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +19,4 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('newsletters', [NewsletterController::class, 'lastFiveNewsletters']);
+Route::get('newsletters/lastfive', [NewsletterController::class, 'lastFiveNewsletters']);
