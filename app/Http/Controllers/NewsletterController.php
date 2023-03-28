@@ -84,27 +84,28 @@ class NewsletterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Newsletter $newsletter)
+    public function edit(Newsletter $id)
     {
-        //
+        return view('newsletters.edit', ['newsletter'=> $id]);
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Newsletter $newsletter)
-    {
-        $request-> validate([
-            'NewsletterID' => 'required',
-            'Title' => 'required',
-            'Date' => 'required',
-            'Active' => 'required',
-        ]);
-        $newsletter = Newsletter::find($request->get('NewsletterID'));
+{
+    $request-> validate([
+        'Title' => 'required',
+        'Date' => 'required | date_format:Y-m-d',
+        'IsActive' => 'required',
+    ]);
+
 
         $newsletter->Title = $request->get('Title');
         $newsletter->Date = $request->get('Date');
-        $newsletter->Active = $request->get('Active');
+        $newsletter->IsActive = $request->get('IsActive'); // this is getting interger value, 0 or 1
+        $newsletter->Logo = $request->get('Logo');
         $newsletter -> save();
 
         return redirect('/newsletters')->with('success', 'Newsletter updated!');
