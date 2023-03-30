@@ -47,5 +47,7 @@
     </tr>
 @endforeach
 </table>
-{{-- {{ $newsletters->links() }} --}}
+<div class="d-flex justify-content-center">
+    {{ $newsletters->links() }}
+</div>
 @endsection

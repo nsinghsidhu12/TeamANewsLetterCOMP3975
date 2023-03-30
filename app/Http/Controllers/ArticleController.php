@@ -29,7 +29,7 @@ class ArticleController extends Controller
     */
     public function index()
     {
-        $data = Article::all();
+        $data = Article::paginate(5);
         return view("articles.index", ['articles' => $data]);
     }
 

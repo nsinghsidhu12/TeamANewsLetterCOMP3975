@@ -55,5 +55,7 @@
             </tr>
         @endforeach
     </table>
-    {{-- {{ $articles->links() }} --}}
+    <div class="d-flex justify-content-center">
+        {{ $articles->links() }}
+    </div>
 @endsection

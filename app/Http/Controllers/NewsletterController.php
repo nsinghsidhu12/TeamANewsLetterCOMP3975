@@ -27,7 +27,7 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        $data = Newsletter::all();
+        $data = Newsletter::paginate(5);
         return view("newsletters.index", ['newsletters' => $data]);
     }
 
