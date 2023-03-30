@@ -34,26 +34,26 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Title:</strong>
-                    <input type="text" name="Title" value="{{ $newsletter->Title }}" class="form-control" placeholder="Newsletter">
+                    <input type="text" name="Title" value="{{ $newsletter->Title }}" class="form-control" placeholder="Newsletter Title">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Date:</strong>
-                    <input type="text" name="Date" value="{{ $newsletter->Date }}" class="form-control" placeholder="Date">
+                    <input type="text" name="Date" value="{{ $newsletter->Date }}" class="form-control" placeholder="Enter Y-m-d format">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Active Status:</strong>
-                    <input type="text" name="IsActive" value="{{ $newsletter->IsActive}}" class="form-control" placeholder="Active Status">
+                    <input type="text" name="IsActive" value="{{ $newsletter->IsActive}}" class="form-control" placeholder="Enter 0 for Non Active, 1 for Active">
                 </div>
             </div>
 			<div class="form-group">
                 <label for="image">Logo URL</label>
-                <input type="text" class="form-control" id="image" name="image" value="{{$newsletter->Logo }}">
+                <input type="text" class="form-control" id="image" name="image" value="{{$newsletter->Logo }}" placeholder="Enter Logo URL">
             </div>
             
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
