@@ -6,7 +6,7 @@ use App\Models\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 /**
- * @OA\Info(title="Newsletter API", 
+ * @OA\Info(title="Newsletter API",
  *          version="1.0",
  *         description="Newsletter API Documentation")
  */
@@ -132,7 +132,7 @@ class NewsletterController extends Controller
     {
         $data = DB::table('newsletters')
             ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID', 'left')
-            ->select('newsletters.NewsletterID', 'newsletters.Title as NewsletterTitle', 'newsletters.Date', 'newsletters.Logo', 
+            ->select('newsletters.NewsletterID', 'newsletters.Title as NewsletterTitle', 'newsletters.Date', 'newsletters.Logo',
             'articles.Title as ArticleTitle', 'articles.Description', 'articles.Image', 'articles.ImagePlacement')
             ->where('newsletters.NewsletterID', '=', $id)
             ->get();
@@ -212,13 +212,11 @@ class NewsletterController extends Controller
     $request-> validate([
         'Title' => 'required',
         'Date' => 'required | date_format:Y-m-d',
-        'IsActive' => 'required',
     ]);
-
 
         $newsletter->Title = $request->get('Title');
         $newsletter->Date = $request->get('Date');
-        $newsletter->IsActive = $request->get('IsActive'); // this is getting interger value, 0 or 1
+        $newsletter->IsActive = $request->get('IsActive') === 'on' ? 1 : 0; // convert 'on' to 1, and other values to 0
         $newsletter->Logo = $request->get('Logo');
         $newsletter -> save();
 
