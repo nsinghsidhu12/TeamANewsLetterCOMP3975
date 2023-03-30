@@ -35,7 +35,7 @@
 @foreach($newsletters as $item)
     <tr>
         <td>{{ $item->NewsletterID }}</td>
-        <td width="10%">{{ $item->Logo }}</td>
+        <td width="10%"><img src={{ $item->Logo }} style="width: 150px;"></td>
         <td>{{ $item->Title }}</td>
         <td>{{ $item->Date }}</td>
         <td>{{ ($item->IsActive)? "Active" : "Not Active" }}</td>
