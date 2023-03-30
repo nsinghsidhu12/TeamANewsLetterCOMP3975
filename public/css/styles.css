@@ -36,11 +36,20 @@ td .btn {
 }
 
 .login-btn {
-    width: 88px;
+    width: 150px;
 }
 
 .register-btn {
-    width: 88px;
+    width: 150px;
+}
+
+.update-btn {
+    width: 80px;
+}
+
+.cancel-btn {
+    width: 80px;
+    margin-left: 1em;
 }
 
 .with-background {
@@ -50,4 +59,22 @@ td .btn {
 
 .with-opacity {
     opacity: 0.95;
+}
+
+.edit-card {
+    margin-top: 1em;
+    padding: 1.5rem;
+}
+
+.tox-tinymce {
+    height: 250px !important;
+}
+
+.form-group label{
+    margin-top: 1rem;
+}
+
+.form-switch .form-check-input {
+    width: 3em;
+    height: 1.5em;
 }

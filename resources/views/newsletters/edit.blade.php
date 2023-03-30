@@ -3,20 +3,14 @@
 @section('title', 'Edit NewsLetter')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit NewsLetter</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('newsletters.index') }}">&lt;&lt; Back</a>
-            </div>
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Edit NewsLetter</h2>
         </div>
     </div>
-    <br />
     @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>Whoops!</strong> There were some problems with your input.
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -25,41 +19,49 @@
         </div>
     @endif
 
-    <form action="{{ route('newsletters.update',$newsletter->id) }}" method="POST">
+    <form action="{{ route('newsletters.update', $newsletter->id) }}" method="POST">
         @csrf
         @method('PUT')
-
-		<input type="hidden" name="id" value="{{ $newsletter->id }}" />
-		<div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Title:</strong>
-                    <input type="text" name="Title" value="{{ $newsletter->Title }}" class="form-control" placeholder="Newsletter Title">
+        <div class="card edit-card">
+            <input type="hidden" name="id" value="{{ $newsletter->id }}" />
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label><b>Title:</b></label>
+                        <input type="text" name="Title" value="{{ $newsletter->Title }}" class="form-control"
+                            placeholder="Newsletter Title">
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Date:</strong>
-                    <input type="text" name="Date" value="{{ $newsletter->Date }}" class="form-control" placeholder="Enter Y-m-d format">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label><b>Date:</b></label>
+                        <input type="text" name="Date" value="{{ $newsletter->Date }}" class="form-control"
+                            placeholder="Enter Y-m-d format">
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Active Status:</strong>
-                    <input type="text" name="IsActive" value="{{ $newsletter->IsActive}}" class="form-control" placeholder="Enter 0 for Non Active, 1 for Active">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label><b>Active Status:</b></label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="IsActive" {{ $newsletter->IsActive == 1 ? 'checked' : '' }}>
+                        </div>
+                    </div>
                 </div>
-            </div>
-			<div class="form-group">
-                <label for="image">Logo URL</label>
-                <input type="text" class="form-control" id="image" name="image" value="{{$newsletter->Logo }}" placeholder="Enter Logo URL">
-            </div>
-            
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Update</button>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label><b>Logo URL</b></label>
+                        <input type="text" class="form-control" id="image" name="Logo" value="{{ $newsletter->Logo }}"
+                            placeholder="Enter Logo URL">
+                    </div>
+                </div>
             </div>
         </div>
+
+        <br />
+        <button type="submit" class="update-btn btn btn-primary">Update</button>
+        <a class="cancel-btn btn btn-secondary" href="{{ route('newsletters.index') }}">Cancel</a>
 
     </form>
 @endsection
