@@ -25,9 +25,9 @@
                     @auth
                         <a href="{{ url('/') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
-                        <button onclick="window.location='{{ route('login') }}'" class="login-btn btn btn-dark">Log in</button><br/>
+                        <button onclick="window.location='{{ route('login') }}'" class="login-btn btn btn-dark" style="font-size: 30px;">Log in</button><br/>
                         @if (Route::has('register'))
-                            <button onclick="window.location='{{ route('register') }}'" class="register-btn btn btn-dark">Register</button>
+                            <button onclick="window.location='{{ route('register') }}'" class="register-btn btn btn-dark" style="font-size: 30px;">Register</button>
                         @endif
                     @endauth
                 </div>

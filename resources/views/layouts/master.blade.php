@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #B4DAFF;">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('dashboard') }}">Team A</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -19,7 +19,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="mb-2 navbar-nav me-auto mb-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
