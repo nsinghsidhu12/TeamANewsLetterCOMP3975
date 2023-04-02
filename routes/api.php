@@ -20,12 +20,12 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::get('newsletters/lastfive', [NewsletterController::class, 'lastFiveNewsletters']);
 Route::get('newsletters', [NewsletterController::class, 'newslettersIndex']);
 Route::get('newsletters/{NewsletterID}', [NewsletterController::class, 'newslettersShow']);
 Route::post('newsletters', [NewsletterController::class, 'newslettersStore']);
 Route::put('newsletters/{NewsletterID}', [NewsletterController::class, 'newslettersUpdate']);
 Route::delete('newsletters/{NewsletterID}', [NewsletterController::class, 'newslettersDelete']);
-Route::get('newsletters/lastfive', [NewsletterController::class, 'lastFiveNewsletters']);
 
 Route::get('articles', [ArticleController::class, 'articlesIndex']);
 Route::get('articles/{ArticleID}', [ArticleController::class, 'articlesShow']);
