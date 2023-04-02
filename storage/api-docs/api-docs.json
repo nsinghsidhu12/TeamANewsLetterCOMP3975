@@ -238,13 +238,196 @@
                 }
             }
         },
+        "/api/newsletters": {
+            "get": {
+                "tags": [
+                    "Newsletters"
+                ],
+                "summary": "Get all the newsletters without their articles",
+                "description": "Get all the newsletters without their articles in the database",
+                "operationId": "newslettersIndex",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Newsletters"
+                ],
+                "summary": "Add a newsletter",
+                "description": "Add a newsletter to the database",
+                "operationId": "newslettersStore",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Newsletter"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Newsletter"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/newsletters/{NewsletterID}": {
+            "get": {
+                "tags": [
+                    "Newsletters"
+                ],
+                "summary": "Get a newsletter's information without the articles",
+                "description": "Get a newsletter's information without the articles from the database",
+                "operationId": "newslettersShow",
+                "parameters": [
+                    {
+                        "name": "NewsletterID",
+                        "in": "path",
+                        "description": "The ID of a newsletter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Newsletters"
+                ],
+                "summary": "Update an existing newsletter's basic information",
+                "description": "Update an existing newsletter's basic information in the database",
+                "operationId": "newslettersUpdate",
+                "parameters": [
+                    {
+                        "name": "NewsletterID",
+                        "in": "path",
+                        "description": "The ID of a newsletter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Newsletter"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Newsletter"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Newsletters"
+                ],
+                "summary": "Delete an existing newsletter",
+                "description": "Deletes an existing newsletter in the database",
+                "operationId": "newslettersDelete",
+                "parameters": [
+                    {
+                        "name": "NewsletterID",
+                        "in": "path",
+                        "description": "The ID of a newsletter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/newsletters/lastfive": {
             "get": {
                 "tags": [
                     "Newsletters"
                 ],
-                "summary": "Get the last five active newsletters",
-                "description": "Get the last five active newsletters",
+                "summary": "Get the last five active newsletters with their articles",
+                "description": "Get the last five active newsletters with their articles from the database",
                 "operationId": "lastFiveNewsletters",
                 "responses": {
                     "200": {
@@ -292,7 +475,7 @@
                         "example": "https://via.placeholder.com/640x480.png/000055?text=est"
                     },
                     "ImagePlacement": {
-                        "description": "The placement for an article's image.",
+                        "description": "The placement for an article's image",
                         "type": "string",
                         "example": "Left"
                     }
