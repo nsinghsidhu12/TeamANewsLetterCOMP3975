@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\NewsletterController;
-use App\Models\Newsletter;
+use App\Http\Controllers\api\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +26,9 @@ Route::post('newsletters', [NewsletterController::class, 'newslettersStore']);
 Route::put('newsletters/{NewsletterID}', [NewsletterController::class, 'newslettersUpdate']);
 Route::delete('newsletters/{NewsletterID}', [NewsletterController::class, 'newslettersDelete']);
 Route::get('newsletters/lastfive', [NewsletterController::class, 'lastFiveNewsletters']);
+
+Route::get('articles', [ArticleController::class, 'articlesIndex']);
+Route::get('articles/{ArticleID}', [ArticleController::class, 'articlesShow']);
+Route::post('articles', [ArticleController::class, 'articlesStore']);
+Route::put('articles/{ArticleID}', [ArticleController::class, 'articlesUpdate']);
+Route::delete('articles/{ArticleID}', [ArticleController::class, 'articlesDelete']);

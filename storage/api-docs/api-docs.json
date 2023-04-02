@@ -6,14 +6,14 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/articles": {
+        "/api/articles": {
             "get": {
                 "tags": [
                     "Articles"
                 ],
-                "summary": "Get all articles",
-                "description": "Read all the articles in the database",
-                "operationId": "index",
+                "summary": "Get all the articles",
+                "description": "Get all the articles in the database",
+                "operationId": "articlesIndex",
                 "responses": {
                     "200": {
                         "description": "successful operation"
@@ -22,218 +22,169 @@
                         "description": "Invalid status value"
                     }
                 }
-            }
-        },
-        "/articles/store": {
+            },
             "post": {
                 "tags": [
                     "Articles"
                 ],
-                "summary": "Create a new article",
-                "description": "Create a new article",
-                "operationId": "store",
+                "summary": "Add an article",
+                "description": "Add an article to the database",
+                "operationId": "articlesStore",
                 "requestBody": {
-                    "description": "Pass article data",
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "title",
-                                    "description",
-                                    "image_placement"
-                                ],
-                                "properties": {
-                                    "title": {
-                                        "type": "string",
-                                        "format": "text",
-                                        "example": "Article Title"
-                                    },
-                                    "description": {
-                                        "type": "string",
-                                        "format": "text",
-                                        "example": "Article Description"
-                                    },
-                                    "image_placement": {
-                                        "type": "string",
-                                        "format": "text",
-                                        "example": "left"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "format": "binary",
-                                        "example": "image.jpg"
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Article"
                             }
                         }
                     }
                 },
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
                     },
                     "400": {
-                        "description": "Invalid status value"
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 }
             }
         },
-        "/articles/show/{ArticleID}": {
+        "/api/articles/{ArticleID}": {
             "get": {
                 "tags": [
                     "Articles"
                 ],
-                "summary": "Get article by id",
-                "description": "Read article by id",
-                "operationId": "show",
+                "summary": "Get an article's information",
+                "description": "Get an article's information from the database",
+                "operationId": "articlesShow",
                 "parameters": [
                     {
                         "name": "ArticleID",
                         "in": "path",
-                        "description": "ID of article to return",
+                        "description": "The ID of an article",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "format": "int64"
+                            "type": "integer"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Invalid status value"
-                    }
-                }
-            }
-        },
-        "/articles/edit/{ArticleID}": {
-            "get": {
-                "tags": [
-                    "Articles"
-                ],
-                "summary": "Get article by id",
-                "description": "Read article by id",
-                "operationId": "edit",
-                "parameters": [
-                    {
-                        "name": "ArticleID",
-                        "in": "path",
-                        "description": "ID of article to return",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int64"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
+                        "description": "Bad Request"
                     },
-                    "400": {
-                        "description": "Invalid status value"
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 }
-            }
-        },
-        "/articles/update/{id}": {
+            },
             "put": {
                 "tags": [
                     "Articles"
                 ],
-                "summary": "Update article by id",
-                "description": "Update article by id",
-                "operationId": "update",
+                "summary": "Update an existing articles's information",
+                "description": "Update an existing article's information in the database",
+                "operationId": "articlesUpdate",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "ArticleID",
                         "in": "path",
-                        "description": "ID of article to return",
+                        "description": "The ID of a article",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "format": "int64"
+                            "type": "integer"
                         }
                     }
                 ],
                 "requestBody": {
-                    "description": "Pass article data",
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "title",
-                                    "description",
-                                    "image_placement"
-                                ],
-                                "properties": {
-                                    "title": {
-                                        "type": "string",
-                                        "format": "text",
-                                        "example": "Article Title"
-                                    },
-                                    "description": {
-                                        "type": "string",
-                                        "format": "text",
-                                        "example": "Article Description"
-                                    },
-                                    "image_placement": {
-                                        "type": "string",
-                                        "format": "text",
-                                        "example": "left"
-                                    },
-                                    "image": {
-                                        "type": "string",
-                                        "format": "binary",
-                                        "example": "image.jpg"
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Article"
                             }
                         }
                     }
                 },
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
                     },
                     "400": {
-                        "description": "Invalid status value"
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
                     }
                 }
-            }
-        },
-        "/articles/destroy/{ArticleID}": {
-            "get": {
+            },
+            "delete": {
                 "tags": [
                     "Articles"
                 ],
-                "summary": "Delete article by id",
-                "description": "Delete article by id",
-                "operationId": "destroy",
+                "summary": "Delete an existing article",
+                "description": "Deletes an existing article in the database",
+                "operationId": "articlesDelete",
                 "parameters": [
                     {
                         "name": "ArticleID",
                         "in": "path",
-                        "description": "ID of article to return",
+                        "description": "The ID of a article",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "format": "int64"
+                            "type": "integer"
                         }
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
-                    "400": {
-                        "description": "Invalid status value"
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
                     }
                 }
             }
@@ -452,6 +403,7 @@
                     "ArticleID": {
                         "description": "The ID of an article",
                         "type": "integer",
+                        "readOnly": "true",
                         "example": "1"
                     },
                     "NewsletterID": {

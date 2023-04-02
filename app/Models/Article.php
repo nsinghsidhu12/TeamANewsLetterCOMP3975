@@ -15,6 +15,7 @@ use Laravel\Scout\Searchable;
  * property="ArticleID",
  * type="integer",
  * description="The ID of an article",
+ * readOnly="true",
  * example="1"
  * ),
  * @OA\Property(
