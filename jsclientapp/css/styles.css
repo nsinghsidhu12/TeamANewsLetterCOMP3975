@@ -1,9 +1,39 @@
 .display-card {
     padding: 2.5em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    width: 70%;
+    min-width: 600px;
+    margin: 2.5em auto;
 }
 
 .article-image {
     max-width: 100%;
+}
+
+.newsletter-logo {
+    max-width: 150px;
+}
+
+article {
+    margin: 1em 0;
+}
+
+.newsletter-title {
+    margin-top: 0.5em;
+}
+
+.team-A {
+    width: 70%;
+    margin: 1em auto;
+    text-align: center;
+    padding: 2em 0;
+}
+
+.img-container {
+    max-width: 20%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .img-container {
+        max-width: 40%;
+    }
 }
