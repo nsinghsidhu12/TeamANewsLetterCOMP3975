@@ -279,7 +279,7 @@ class NewsletterController extends Controller
             DB::table('articles')
             ->where('NewsletterID', '=', $id)
             ->update(['NewsletterID' => null]);
-            
+
             $isSuccess = $newsletter->delete();
         } else {
             $isSuccess = False;
