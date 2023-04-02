@@ -84,10 +84,19 @@ class NewsletterController extends Controller
 
 
     
-    public function destroy(Newsletter $NewsletterID)
+    public function destroy($id, Newsletter $newsletter)
     {
         //delete the newsletter
-        $NewsletterID->delete();
+        $newsletter = Newsletter::find($id);
+
+        if ($newsletter) {
+            DB::table('articles')
+            ->where('NewsletterID', '=', $id)
+            ->update(['NewsletterID' => null]);
+
+            $newsletter->delete();
+        }
+
         return redirect('/newsletters')->with('success', 'Newsletter deleted!');
     }
 }

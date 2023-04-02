@@ -276,6 +276,10 @@ class NewsletterController extends Controller
         $newsletter = Newsletter::find($id);
 
         if ($newsletter) {
+            DB::table('articles')
+            ->where('NewsletterID', '=', $id)
+            ->update(['NewsletterID' => null]);
+            
             $isSuccess = $newsletter->delete();
         } else {
             $isSuccess = False;
