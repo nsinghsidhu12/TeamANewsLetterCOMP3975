@@ -262,67 +262,85 @@
             "Article": {
                 "required": [
                     "ArticleID",
-                    "NewsletterID",
                     "Title",
-                    "Description",
-                    "Image",
-                    "ImagePlacement"
+                    "Description"
                 ],
                 "properties": {
                     "ArticleID": {
-                        "description": "Article ID.",
+                        "description": "The ID of an article",
                         "type": "integer",
-                        "format": "int64",
                         "example": "1"
                     },
                     "NewsletterID": {
-                        "description": "Newsletter ID.",
+                        "description": "The ID of a newsletter that an article is assigned to",
                         "type": "integer",
-                        "format": "int64",
                         "example": "1"
                     },
                     "Title": {
-                        "description": "Article title.",
+                        "description": "The title of an article",
                         "type": "string",
-                        "example": "Article title"
+                        "example": "The Great Article"
                     },
                     "Description": {
-                        "description": "Article description.",
+                        "description": "The description of an article",
                         "type": "string",
-                        "example": "Article description"
+                        "example": "Just a simple description of an article"
                     },
                     "Image": {
-                        "description": "Article image.",
+                        "description": "The URL of an article's image",
                         "type": "string",
-                        "example": "image.jpg"
+                        "example": "https://via.placeholder.com/640x480.png/000055?text=est"
                     },
                     "ImagePlacement": {
-                        "description": "Article image placement.",
+                        "description": "The placement for an article's image.",
                         "type": "string",
-                        "example": "left"
-                    },
-                    "deleted_at": {
-                        "description": "Deleted at.",
-                        "format": "datetime",
-                        "readOnly": "true",
-                        "example": "2022-05-18 07:50:45"
-                    },
-                    "created_at": {
-                        "description": "Created at.",
-                        "format": "datetime",
-                        "readOnly": "true",
-                        "example": "2022-05-18 07:50:45"
-                    },
-                    "updated_at": {
-                        "description": "Updated at.",
-                        "format": "datetime",
-                        "readOnly": "true",
-                        "example": "2022-06-11 06:15:25"
+                        "example": "Left"
                     }
                 },
                 "type": "object",
                 "xml": {
                     "name": "Article"
+                }
+            },
+            "Newsletter": {
+                "required": [
+                    "NewsletterID",
+                    "Logo",
+                    "Date",
+                    "Title",
+                    "IsActive"
+                ],
+                "properties": {
+                    "NewsletterID": {
+                        "description": "The ID of a newsletter",
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "Logo": {
+                        "description": "The URL of a newsletter's logo",
+                        "type": "string",
+                        "example": "https://via.placeholder.com/640x480.png/00ee44?text=sed"
+                    },
+                    "Date": {
+                        "description": "The date of a newsletter",
+                        "type": "string",
+                        "example": "2020-01-01"
+                    },
+                    "Title": {
+                        "description": "The title of a newsletter",
+                        "type": "string",
+                        "example": "The Great Newsletter"
+                    },
+                    "IsActive": {
+                        "description": "Determines if a newsletter is active",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Newsletter"
                 }
             }
         }

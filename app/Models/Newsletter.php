@@ -6,6 +6,44 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
+/**
+ *
+ * @OA\Schema(
+ * required={"NewsletterID", "Logo", "Date", "Title", "IsActive"},
+ * @OA\Xml(name="Newsletter"),
+ * @OA\Property(
+ * property="NewsletterID",
+ * type="integer",
+ * description="The ID of a newsletter",
+ * readOnly="true",
+ * example="1"
+ * ),
+ * @OA\Property(
+ * property="Logo",
+ * type="string",
+ * description="The URL of a newsletter's logo",
+ * example="https://via.placeholder.com/640x480.png/00ee44?text=sed"
+ * ),
+ * @OA\Property(
+ * property="Date",
+ * type="string",
+ * description="The date of a newsletter",
+ * example="2020-01-01"
+ * ),
+ * @OA\Property(
+ * property="Title",
+ * type="string",
+ * description="The title of a newsletter",
+ * example="The Great Newsletter"
+ * ),
+ * @OA\Property(
+ * property="IsActive",
+ * type="integer",
+ * description="Determines if a newsletter is active",
+ * example="1"
+ * ),
+ * )
+ */
 class Newsletter extends Model
 {
     use HasFactory, Searchable;

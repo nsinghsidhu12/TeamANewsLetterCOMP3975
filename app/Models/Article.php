@@ -9,66 +9,43 @@ use Laravel\Scout\Searchable;
 /**
  *
  * @OA\Schema(
- * required={"ArticleID", "NewsletterID", "Title", "Description", "Image", "ImagePlacement"},
+ * required={"ArticleID", "Title", "Description"},
  * @OA\Xml(name="Article"),
  * @OA\Property(
  * property="ArticleID",
  * type="integer",
- * format="int64",
- * description="Article ID.",
+ * description="The ID of an article",
  * example="1"
  * ),
  * @OA\Property(
  * property="NewsletterID",
  * type="integer",
- * format="int64",
- * description="Newsletter ID.",
+ * description="The ID of a newsletter that an article is assigned to",
  * example="1"
  * ),
  * @OA\Property(
  * property="Title",
  * type="string",
- * description="Article title.",
- * example="Article title"
+ * description="The title of an article",
+ * example="The Great Article"
  * ),
  * @OA\Property(
  * property="Description",
  * type="string",
- * description="Article description.",
- * example="Article description"
+ * description="The description of an article",
+ * example="Just a simple description of an article"
  * ),
  * @OA\Property(
  * property="Image",
  * type="string",
- * description="Article image.",
- * example="image.jpg"
+ * description="The URL of an article's image",
+ * example="https://via.placeholder.com/640x480.png/000055?text=est"
  * ),
  * @OA\Property(
  * property="ImagePlacement",
  * type="string",
- * description="Article image placement.",
- * example="left"
- * ),
- * @OA\Property(
- * property="deleted_at",
- * readOnly="true",
- * format="datetime",
- * description="Deleted at.",
- * example="2022-05-18 07:50:45"
- * ),
- * @OA\Property(
- * property="created_at",
- * readOnly="true",
- * format="datetime",
- * description="Created at.",
- * example="2022-05-18 07:50:45"
- * ),
- * @OA\Property(
- * property="updated_at",
- * readOnly="true",
- * format="datetime",
- * description="Updated at.",
- * example="2022-06-11 06:15:25"
+ * description="The placement for an article's image",
+ * example="Left"
  * ),
  * )
  */
