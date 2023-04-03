@@ -24,14 +24,16 @@
 @endif
 
 <table class="table table-striped">
-<tr>
-    <th>ID</th>
-    <th>Logo</th>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Active Status</th>
-    <th></th>
-</tr>
+    <thead class="table-header">
+        <tr>
+            <th>ID</th>
+            <th>Logo</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Active Status</th>
+            <th></th>
+        </tr>
+    </thead>
 @foreach($newsletters as $item)
     <tr>
         <td>{{ $item->NewsletterID }}</td>

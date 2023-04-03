@@ -48,7 +48,7 @@
     @endforeach
 </div>
 
-<a class="mt-5 btn btn-primary" href="{{ URL::previous() }}">Back</a>
+<a style="margin-bottom: 2.5rem" class="mt-5 btn btn-primary" href="{{ URL::previous() }}">Back</a>
 
 
 @endsection

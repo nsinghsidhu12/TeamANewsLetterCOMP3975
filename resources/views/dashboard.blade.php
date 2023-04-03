@@ -15,7 +15,7 @@
     </div>
 
     <h2>Latest Active Newsletter</h2>
-    <div class="card display-card">
+    <div style="margin-bottom: 2.5rem" class="card display-card">
         @foreach ($latestNewsletter as $item)
             <section>
                 <div class="row">

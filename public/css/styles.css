@@ -82,3 +82,8 @@ body {
 table {
     background-color: #fff;
 }
+
+.table-header {
+    background-color: #212529;
+    color: #fff;
+}
