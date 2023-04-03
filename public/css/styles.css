@@ -73,3 +73,12 @@ td .btn {
     width: 3em;
     height: 1.5em;
 }
+
+body {
+    background-image: url(https://img.freepik.com/free-photo/blue-toned-set-paper-sheets-with-copy-space_23-2148320447.jpg);
+    background-size: cover;
+}
+
+table {
+    background-color: #fff;
+}
