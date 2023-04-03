@@ -21,15 +21,16 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return view('dashboard');
+        $newsletterController = new NewsletterController;
+        $latestNewsletter = $newsletterController->showLatestNewsletter()->getData();
+        $latestNewsletter = $latestNewsletter['latestNewsletter'];
+        return view('dashboard', ['latestNewsletter' => $latestNewsletter]);
     } else {
         return view('welcome');
     }
 })->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [NewsletterController::class, 'showLatestNewsletter'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

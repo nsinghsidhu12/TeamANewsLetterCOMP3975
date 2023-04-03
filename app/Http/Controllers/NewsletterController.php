@@ -60,6 +60,30 @@ class NewsletterController extends Controller
         return view("newsletters.show", ['newsletters' => $data]);
     }
 
+    public function showLatestNewsletter()
+    {
+        $data = DB::table('newsletters')
+        ->join('articles', 'newsletters.NewsletterID', '=', 'articles.NewsletterID', 'left')
+        ->select(
+            'newsletters.NewsletterID',
+            'newsletters.Title as NewsletterTitle',
+            'newsletters.Date',
+            'newsletters.Logo',
+            'articles.Title as ArticleTitle',
+            'articles.Description',
+            'articles.Image',
+            'articles.ImagePlacement'
+        )
+        ->where('newsletters.IsActive', '=', 1) // Add condition for active newsletter
+        ->orderBy('newsletters.Date', 'desc')
+        ->distinct()
+        ->limit(1)
+        ->get()
+        ->toArray();
+
+        return view("dashboard", ['latestNewsletter' => $data]);
+    }
+
     public function edit(Newsletter $id)
     {
         return view('newsletters.edit', ['newsletter' => $id]);
@@ -83,7 +107,7 @@ class NewsletterController extends Controller
     }
 
 
-    
+
     public function destroy($id, Newsletter $newsletter)
     {
         //delete the newsletter
