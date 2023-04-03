@@ -19,7 +19,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div style="background-image: url('https://media.istockphoto.com/id/1395046093/photo/3d-letter-with-completed-task-or-checklist-in-envelope-isolated-on-background-with-empty-copy.jpg?s=612x612&w=0&k=20&c=efiJo9kso6Ho_4fe1IulfV_sbX5twVXwWXmaAi83NR0=');" class="relative min-h-screen bg-center landing-page sm:flex sm:justify-center sm:items-center dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        <div style="background-image: url('https://media.istockphoto.com/id/1395046093/photo/3d-letter-with-completed-task-or-checklist-in-envelope-isolated-on-background-with-empty-copy.jpg?s=612x612&w=0&k=20&c=efiJo9kso6Ho_4fe1IulfV_sbX5twVXwWXmaAi83NR0='); background-repeat: no-repeat;" class="relative min-h-screen bg-center landing-page sm:flex sm:justify-center sm:items-center dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <div class="login-register-buttons">
                     @auth

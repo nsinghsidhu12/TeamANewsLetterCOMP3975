@@ -7,7 +7,7 @@
     @foreach ($newsletters as $item)
         <section>
             <div class="row">
-                <div class="col text-center">
+                <div class="text-center col">
                     <div>
                         <img src={{ $item->Logo }} style="max-width: 150px;">
                     </div>
@@ -48,7 +48,7 @@
     @endforeach
 </div>
 
-<a class="btn btn-primary mt-5" href="{{ URL::previous() }}">Back</a>
+<a class="mt-5 btn btn-primary" href="{{ URL::previous() }}">Back</a>
 
 
 @endsection
