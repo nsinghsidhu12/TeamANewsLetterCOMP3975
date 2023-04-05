@@ -7,7 +7,7 @@
             Team members
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Atsuki Uchida - ???</li>
+            <li class="list-group-item">Atsuki Uchida - A01276342</li>
             <li class="list-group-item">Nhi Nguyen - A01256656</li>
             <li class="list-group-item">Noorarjun Sidhu - A01275087</li>
             <li class="list-group-item">Richard Fenton - ???</li>
