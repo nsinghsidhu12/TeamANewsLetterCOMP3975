@@ -21,17 +21,17 @@
     <form action="{{ route('newsletters.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="title"><b>Title:</b></label>
+            <label for="Title"><b>Title:</b></label>
             <input type="text" name="Title" class="form-control" placeholder="Title">
         </div>
         <div class="form-group">
-            <label for="date"><b>Date:</b></label>
-            <input type="text" name="Date" class="form-control" placeholder="Date">
+            <label for="Date"><b>Date:</b></label>
+            <input type="text" name="Date" class="form-control" placeholder="Date:Y-m-d">
         </div>
         <div class="form-group">
-            <label for="active"><b>Active status:</b></label>
+            <label for="Active"><b>Active status:</b></label>
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="IsActive">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="Active" >
             </div>
         </div>
         <div class="form-group">
