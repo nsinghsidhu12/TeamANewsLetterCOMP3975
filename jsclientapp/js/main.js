@@ -2,6 +2,7 @@ async function getLastFiveNewsletters() {
     try {
         const response = await fetch("http://localhost:8888/api/newsletters/lastfive");
         const data = await response.json();
+        console.log(data);
         renderNewsletters(data);
     } catch (error) {
         console.log(error);
@@ -96,10 +97,8 @@ function renderNewsletters(newsletters) {
             }
 
             const divDescription = document.createElement("div");
-            const p = document.createElement("p");
-            p.textContent = item.Description;
             divColumn.appendChild(divDescription);
-            divDescription.appendChild(p);
+            divDescription.innerHTML = item.Description;;
             divContainer.appendChild(article);
         }
     }

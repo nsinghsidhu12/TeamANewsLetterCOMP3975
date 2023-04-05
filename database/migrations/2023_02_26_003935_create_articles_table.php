@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('ArticleID');
             $table->unsignedBigInteger('NewsletterID')->nullable();
             $table->string('Title', 256);
-            $table->string('Description', 1024);
+            $table->string('Description', 2048);
             $table->string('Image', 256)->nullable();
             $table->string('ImagePlacement', 128)->nullable();
             $table->foreign('NewsletterID')->references('NewsletterID')->on('newsletters');

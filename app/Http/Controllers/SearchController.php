@@ -11,8 +11,8 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         if ($request->get('search')) {
-            $newsletters = Newsletter::search($request->search)->get();
-            $articles = Article::search($request->search)->get();
+            $newsletters = Newsletter::search($request->search)->paginate(5);
+            $articles = Article::search($request->search)->paginate(5);
         } else {
             $newsletters = Newsletter::paginate(5);
             $articles = Article::paginate(5);
