@@ -48,8 +48,13 @@
                         if (!str_contains($item->Description, "<p>")) {
                             $item->Description = "<p>" . $item->Description . "</p>";
                         }
+                        $limitedDescription = implode(' ', array_slice(explode(' ', $item->Description), 0, 50)); // Limit to 100 words
                     @endphp
-                    {!! html_entity_decode($item->Description) !!}</td>
+                    {!! html_entity_decode($limitedDescription) !!}
+                    @if (str_word_count($item->Description) > 100)
+                        <span class="text-muted">...</span>
+                    @endif
+                </td>
                 @if ($item->Image)
                     <td width="5%"><img src={{ $item->Image }} style="width: 150px;"></td>
                 @else
