@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="image"><b>Image URL</b></label>
-                <input type="text" class="form-control" id="image" name="image" value="{{ $article->image }}">
+                <input type="text" class="form-control" id="Image" name="Image" value="{{ $article->Image }}">
             </div>
             <div class="form-group">
                 <label for="image_placement"><b>Image Placement</b></label>

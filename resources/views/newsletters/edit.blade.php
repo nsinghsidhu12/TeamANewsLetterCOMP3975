@@ -51,8 +51,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label><b>Logo URL</b></label>
-                        <input type="text" class="form-control" id="image" name="Logo" value="{{ $newsletter->Logo }}"
+                        <label><b>Logo URL:</b></label>
+                        <input type="text" class="form-control" id="Logo" name="Logo" value="{{ $newsletter->Logo }}"
                             placeholder="Enter Logo URL">
                     </div>
                 </div>

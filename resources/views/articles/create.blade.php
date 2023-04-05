@@ -10,24 +10,26 @@
     </div>
     <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
         @csrf
-        <div class="form-group">
-            <label for="title"><b>Title:</b></label>
-            <input type="text" name="title" id="title" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="description"><b>Description:</b></label>
-            <textarea name="description" id="description" class="form-control" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="image"><b>Image:</b></label>
-            <input type="file" name="image" id="image" class="form-control-file" required>
-        </div>
-        <div class="form-group">
-            <label for="image_placement"><b>Image Placement:</b></label>
-            <select name="image_placement" id="image_placement" class="form-control" required>
-                <option value="left">Left</option>
-                <option value="right">Right</option>
-            </select>
+        <div class="card edit-card">
+            <div class="form-group">
+                <label for="title"><b>Title:</b></label>
+                <input type="text" name="title" id="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description"><b>Description:</b></label>
+                <textarea name="description" id="description" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image"><b>Image:</b></label>
+                <input type="file" name="image" id="image" class="form-control-file" required>
+            </div>
+            <div class="form-group">
+                <label for="image_placement"><b>Image Placement:</b></label>
+                <select name="image_placement" id="image_placement" class="form-control" required>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
         </div>
         <br />
         <div class='footer-btn'>
