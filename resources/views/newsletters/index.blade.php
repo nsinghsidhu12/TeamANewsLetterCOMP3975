@@ -23,7 +23,7 @@
     </div>
 @endif
 
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
     <thead class="table-header">
         <tr>
             <th>ID</th>
@@ -41,7 +41,7 @@
         <td>{{ $item->Title }}</td>
         <td>{{ $item->Date }}</td>
         <td>{{ ($item->IsActive)? "Active" : "Not Active" }}</td>
-        <td>
+        <td class="text-center">
             <a class="btn btn-info" href="{{ route('newsletters.show',$item->NewsletterID) }}">Show</a>
             <a class="btn btn-primary" href="{{ route('newsletters.edit',$item->NewsletterID) }}">Edit</a>
             <a class="btn btn-danger" href="{{ route('newsletters.destroy',$item->NewsletterID) }}">Del</a>

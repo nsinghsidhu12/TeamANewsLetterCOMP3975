@@ -45,7 +45,7 @@ td .btn {
     margin-left: 1em;
 }
 
-.footer-btn{
+.footer-btn {
     margin-bottom: 2em;
 }
 
@@ -69,7 +69,7 @@ td .btn {
     height: 250px !important;
 }
 
-.form-group label{
+.form-group label {
     margin-top: 1rem;
 }
 
@@ -86,3 +86,20 @@ table {
     background-color: #212529;
     color: #fff;
 }
+
+.btn-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8
+}
+
+.btn-info:hover {
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b
+}
+
+.btn-info.focus, .btn-info:focus {
+    box-shadow: 0 0 0 .2rem rgba(23, 162, 184, .5)
+}
+
