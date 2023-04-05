@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('newsletters.update', $newsletter->id) }}" method="POST">
+    <form method="POST" action="{{ route('newsletters.update', ['id' => $newsletter->NewsletterID]) }}">
         @csrf
         @method('PUT')
         <div class="card edit-card">
