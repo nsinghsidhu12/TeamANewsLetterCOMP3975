@@ -61,7 +61,7 @@
 
         <br />
         <button type="submit" class="update-btn btn btn-primary">Update</button>
-        <a class="cancel-btn btn btn-secondary" href="{{ route('newsletters.index') }}">Cancel</a>
+        <a class="cancel-btn btn btn-secondary" href="{{ URL::previous() }}">Cancel</a>
 
     </form>
 @endsection

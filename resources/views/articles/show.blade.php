@@ -19,7 +19,12 @@
                 </div>
                 @endif
                 <div>
-                    <p>{{ $article->Description }}</p>
+                    @php
+                        if (!str_contains($article->Description, "<p>")) {
+                            $article->Description = "<p>" . $article->Description . "</p>";
+                        }
+                    @endphp
+                    {!! html_entity_decode($article->Description) !!}
                 </div>
     </div>
     </section>

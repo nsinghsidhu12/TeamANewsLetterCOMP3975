@@ -43,7 +43,13 @@
                     <td>None</td>
                 @endif
                 <td>{{ $item->Title }}</td>
-                <td>{{ $item->Description }}</td>
+                <td>
+                    @php
+                        if (!str_contains($item->Description, "<p>")) {
+                            $item->Description = "<p>" . $item->Description . "</p>";
+                        }
+                    @endphp
+                    {!! html_entity_decode($item->Description) !!}</td>
                 @if ($item->Image)
                     <td width="5%"><img src={{ $item->Image }} style="width: 150px;"></td>
                 @else
