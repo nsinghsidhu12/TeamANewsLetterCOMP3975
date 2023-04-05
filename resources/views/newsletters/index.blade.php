@@ -4,52 +4,65 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="pull-left">
-            <h2>Newsletters List</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-success create" href="{{ route('newsletters.create') }}">
-                Create New Newsletter
-            </a>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-left">
+                <h2>Newsletters List</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-success create" href="{{ route('newsletters.create') }}">
+                    Create New Newsletter
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-header">
+            <tr>
+                <th>ID</th>
+                <th>Logo</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Active Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach ($newsletters as $item)
+            <tr>
+                <td>{{ $item->NewsletterID }}</td>
+                <td width="10%"><img src={{ $item->Logo }} style="width: 150px;"></td>
+                <td>{{ $item->Title }}</td>
+                <td>{{ $item->Date }}</td>
+                <td>{{ $item->IsActive ? 'Active' : 'Not Active' }}</td>
+                <td class="text-center">
+                    <a class="btn btn-info" href="{{ route('newsletters.show', $item->NewsletterID) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('newsletters.edit', $item->NewsletterID) }}">Edit</a>
+                    <form style="display: contents;" action="{{ route('newsletters.destroy', $item->NewsletterID) }}"
+                        method="GET">
+                        @csrf
+                        <a class="btn btn-danger" href="{{ route('newsletters.destroy', $item->NewsletterID) }}"
+                            onclick="confirmDelete(event, {{ $item->NewsletterID }})">Del</a>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+    <div class="d-flex justify-content-center">
+        {{ $newsletters->links() }}
     </div>
-@endif
-
-<table class="table table-striped table-bordered">
-    <thead class="table-header">
-        <tr>
-            <th>ID</th>
-            <th>Logo</th>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Active Status</th>
-            <th></th>
-        </tr>
-    </thead>
-@foreach($newsletters as $item)
-    <tr>
-        <td>{{ $item->NewsletterID }}</td>
-        <td width="10%"><img src={{ $item->Logo }} style="width: 150px;"></td>
-        <td>{{ $item->Title }}</td>
-        <td>{{ $item->Date }}</td>
-        <td>{{ ($item->IsActive)? "Active" : "Not Active" }}</td>
-        <td class="text-center">
-            <a class="btn btn-info" href="{{ route('newsletters.show',$item->NewsletterID) }}">Show</a>
-            <a class="btn btn-primary" href="{{ route('newsletters.edit',$item->NewsletterID) }}">Edit</a>
-            <a class="btn btn-danger" href="{{ route('newsletters.destroy',$item->NewsletterID) }}">Del</a>
-        </td>
-    </tr>
-@endforeach
-</table>
-<div class="d-flex justify-content-center">
-    {{ $newsletters->links() }}
-</div>
+    <script>
+        function confirmDelete(event, newsletterId) {
+            event.preventDefault(); // prevent the default form submission
+            if (confirm("Are you sure you want to delete the newsletter with ID " + newsletterId + "?")) {
+                event.target.closest('form').submit(); // submit the form if user confirms
+            }
+        }
+    </script>
 @endsection
