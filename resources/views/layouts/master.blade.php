@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
-<body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+<body class="bg-light bg-gradient">
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #B4DAFF">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('dashboard') }}">Team A</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -37,11 +37,7 @@
                 </form>
                 <form class="nav-link" method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <x-dropdown-link :href="route('logout')"
-                        onclick="event.preventDefault();
-                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-dropdown-link>
+                    <button class="btn btn-primary" onclick="window.location='{{ route('logout') }}'">Logout</button>
                 </form>
             </div>
         </div>

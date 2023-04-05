@@ -45,6 +45,10 @@ td .btn {
     margin-left: 1em;
 }
 
+.footer-btn{
+    margin-bottom: 2em;
+}
+
 .landing-page {
     background-image: url('https://media.istockphoto.com/id/1355089420/vector/new-letter-one-line.jpg?s=612x612&w=0&k=20&c=PUMkgJ3a4bvViOoQZlJxchg0aHDJPftGttIfcs3fzNE=');
     background-color: #B4DAFF;
@@ -72,11 +76,6 @@ td .btn {
 .form-switch .form-check-input {
     width: 3em;
     height: 1.5em;
-}
-
-body {
-    background-image: url(https://img.freepik.com/free-photo/blue-toned-set-paper-sheets-with-copy-space_23-2148320447.jpg);
-    background-size: cover;
 }
 
 table {
