@@ -1,0 +1,29 @@
+version: '3.8'
+
+volumes:
+  datafiles:
+
+services: 
+  mysql_db:
+    image: mariadb
+    container_name: teamAMariaDB
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_TCP_PORT=3333
+      - MYSQL_DATABASE=test
+    ports:
+    - 3333:3306
+    volumes:
+       - datafiles:/var/lib/mysql
+    restart: always
+
+  laravel-docker:
+    container_name: teamALaravelApp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "php artisan cache:clear && php artisan config:cache && php artisan serve --host=0.0.0.0 && php artisan migrate && php artisan migrate:refresh --seed"
+    ports:
+      - 8888:8000
+    depends_on:
+      - mysql_db
