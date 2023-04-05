@@ -29,10 +29,10 @@ class NewsletterController extends Controller
         ]);
 
         $newsletter = new Newsletter([
-            'title' => $request->get('Title'),
-            'date' => $request->get('Date'),
-            'active' => $request->get('Active'),
-            'logo' => $request->get('Logo'),
+            'Title' => $request->get('Title'),
+            'Date' => $request->get('Date'),
+            'Active' => $request->get('Active'),
+            'Logo' => $request->get('Logo'),
         ]);
 
         // Newsletter::create($request->all());
@@ -84,14 +84,16 @@ class NewsletterController extends Controller
         return view("dashboard", ['latestNewsletter' => $data]);
     }
 
-    public function edit(Newsletter $id)
+    public function edit($id)
     {
-        return view('newsletters.edit', ['newsletter' => $id]);
+        $newsletter = Newsletter::findOrFail($id);
+        return view('newsletters.edit', compact('newsletter'));
     }
 
 
-    public function update(Request $request, Newsletter $newsletter)
+    public function update(Request $request, $id)
     {
+        $newsletter = Newsletter::findOrfail($id);
         $request->validate([
             'Title' => 'required',
             'Date' => 'required | date_format:Y-m-d',
