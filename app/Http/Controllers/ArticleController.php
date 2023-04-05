@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 
 class ArticleController extends Controller
@@ -30,20 +31,15 @@ class ArticleController extends Controller
         $article = new Article();
         $article->Title = $request->input('title');
         $article->Description = $request->input('description');
+        $article->Image = $request->input('Image');
         $article->ImagePlacement = $request->input('image_placement');
-
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/images');
-            $article->Image = Storage::url($imagePath);
-        }
-
         $article->NewsletterID = 1; // Set a value for the NewsletterID field
-
         $article->save();
-
+    
         return redirect()->route('articles.index')->with('success', 'Article was created successfully.');
     }
 
+    
     public function show($id)
     {
         return view('articles.show', [
@@ -63,15 +59,9 @@ class ArticleController extends Controller
         $article->Title = $request->input('title');
         $article->Description = $request->input('description');
         $article->ImagePlacement = $request->input('image_placement');
-
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/images');
-            $article->Image = Storage::url($imagePath);
-        }
-
-
+        $article->Image = $request->input('Image');
         $article->save();
-
+    
         return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
 
