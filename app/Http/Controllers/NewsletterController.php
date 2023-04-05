@@ -26,6 +26,7 @@ class NewsletterController extends Controller
             'Title' => 'required',
             'Date' => 'required',
             'Active' => 'required',
+            'Logo' => 'required',
         ]);
 
         $newsletter = new Newsletter([
@@ -97,6 +98,7 @@ class NewsletterController extends Controller
         $request->validate([
             'Title' => 'required',
             'Date' => 'required | date_format:Y-m-d',
+            'Logo' => 'required',
         ]);
 
         $newsletter->Title = $request->get('Title');
