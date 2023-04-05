@@ -51,7 +51,7 @@
                         $limitedDescription = implode(' ', array_slice(explode(' ', $item->Description), 0, 50)); // Limit to 100 words
                     @endphp
                     {!! html_entity_decode($limitedDescription) !!}
-                    @if (str_word_count($item->Description) > 100)
+                    @if (str_word_count($item->Description) > 50)
                         <span class="text-muted">...</span>
                     @endif
                 </td>
