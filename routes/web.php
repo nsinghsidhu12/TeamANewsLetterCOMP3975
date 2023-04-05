@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('newsletters/show/{NewsletterID}', [NewsletterController::class, 'show'])->name('newsletters.show');
     Route::get('newsletters/edit/{NewsletterID}', [NewsletterController::class, 'edit'])->name('newsletters.edit');
-    Route::put('newsletters/update', [NewsletterController::class, 'update'])->name('newsletters.update');
+    Route::put('newsletters/update{id}', [NewsletterController::class, 'update'])->name('newsletters.update');
     Route::get('newsletters/destroy/{NewsletterID}', [NewsletterController::class, 'destroy'])->name('newsletters.destroy');
 
     // Add a web route to the articles.index
