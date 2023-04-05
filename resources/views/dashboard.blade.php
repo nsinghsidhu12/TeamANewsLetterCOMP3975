@@ -10,7 +10,7 @@
             <li class="list-group-item">Atsuki Uchida - A01276342</li>
             <li class="list-group-item">Nhi Nguyen - A01256656</li>
             <li class="list-group-item">Noorarjun Sidhu - A01275087</li>
-            <li class="list-group-item">Richard Fenton - ???</li>
+            <li class="list-group-item">Richard Fenton - A01294551</li>
         </ul>
     </div>
 
@@ -32,32 +32,29 @@
                     </div>
                 </div>
             </section>
-            @endforeach
-
-
-        @foreach($latestNewsletter as $item)
-
-        <article>
-            <h2 class="text-center">{{ $item->ArticleTitle }}</h2>
-            <section class="row">
-                <div class="col">
-                    @if ($item->Image !== null)
-                        @if ($item->ImagePlacement === "Left")
-                            <div class="float-start pe-4" style="width: 20%;">
-                        @elseif ($item->ImagePlacement === "Right")
-                            <div class="float-end ps-4" style="width: 20%;">
-                        @endif
-                        <img src={{ $item->Image }} style="max-width: 100%;">
-                        </div>
-                    @endif
-                    <div>
-                        <p>{{ $item->Description }}</p>
-                    </div>
-                </div>
-            </section>
-        </article>
-
         @endforeach
+
+
+        @foreach ($latestNewsletter as $item)
+            <article>
+                <h2 class="text-center">{{ $item->ArticleTitle }}</h2>
+                <section class="row">
+                    <div class="col">
+                        @if ($item->Image !== null)
+                            @if ($item->ImagePlacement === 'Left')
+                                <div class="float-start pe-4" style="width: 20%;">
+                                @elseif ($item->ImagePlacement === 'Right')
+                                    <div class="float-end ps-4" style="width: 20%;">
+                            @endif
+                            <img src={{ $item->Image }} style="max-width: 100%;">
+                    </div>
+        @endif
+        <div>
+            <p>{{ $item->Description }}</p>
+        </div>
+    </div>
+    </section>
+    </article>
+    @endforeach
     </div>
 @endsection
-

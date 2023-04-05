@@ -20,8 +20,8 @@
                 <textarea name="description" id="description" class="form-control" required></textarea>
             </div>
             <div class="form-group">
-                <label for="image"><b>Image:</b></label>
-                <input type="file" name="image" id="image" class="form-control-file" required>
+                <label for="image"><b>Image-url:</b></label>
+                <input type="text" name="Image" id="Image" class="form-control-file" required>
             </div>
             <div class="form-group">
                 <label for="image_placement"><b>Image Placement:</b></label>
