@@ -8,6 +8,16 @@
             <h2>Edit Article</h2>
         </div>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form method="POST" action="{{ route('articles.update', ['id' => $article->ArticleID]) }}">
         @csrf
         @method('PUT')
@@ -23,14 +33,14 @@
             </div>
             <div class="form-group">
                 <label for="image"><b>Image URL</b></label>
-                <input type="text" class="form-control" id="Image" name="Image" value="{{ $article->Image }}">
+                <input type="text" class="form-control" id="image" name="image" value="{{ $article->Image }}">
             </div>
             <div class="form-group">
                 <label for="image_placement"><b>Image Placement</b></label>
                 <select class="form-control" id="image_placement" name="image_placement">
-                    <option value="Left" {{ $article->image_placement == 'Left' ? 'selected' : '' }}>Left</option>
-                    <option value="Right" {{ $article->image_placement == 'Right' ? 'selected' : '' }}>Right</option>
-                    <option value="None" {{ $article->image_placement == 'None' ? 'selected' : '' }}>None</option>
+                    <option value="Left" {{ $article->ImagePlacement === 'Left' ? 'selected' : '' }}>Left</option>
+                    <option value="Right" {{ $article->ImagePlacement === 'Right' ? 'selected' : '' }}>Right</option>
+                    <option value="None" {{ $article->ImagePlacement === 'None' ? 'selected' : '' }}>None</option>
                 </select>
             </div>
             <!--dropdown list of newsletter names with their ids-->

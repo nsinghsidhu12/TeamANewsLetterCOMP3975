@@ -8,6 +8,16 @@
             <h2>Create Article</h2>
         </div>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form method="POST" action="{{ route('articles.store') }}">
         @csrf
         <div class="card edit-card">
@@ -21,13 +31,14 @@
             </div>
             <div class="form-group">
                 <label for="image"><b>Image URL</b></label>
-                <input type="text" class="form-control" id="Image" name="Image">
+                <input type="text" class="form-control" id="image" name="image">
             </div>
             <div class="form-group">
                 <label for="image_placement"><b>Image Placement:</b></label>
                 <select name="image_placement" id="image_placement" class="form-control">
                     <option value="Left">Left</option>
                     <option value="Right">Right</option>
+                    <option value="None">None</option>
                 </select>
             </div>
             <!--dropdown list of newsletter names with their ids-->

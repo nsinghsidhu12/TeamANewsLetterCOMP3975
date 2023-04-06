@@ -30,11 +30,23 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required_if:image_placement,Left,Right',
+        ]);
+
         $article = new Article();
         $article->Title = $request->input('title');
         $article->Description = $request->input('description');
-        $article->Image = $request->input('Image');
+        $article->Image = $request->input('image');
+
+        if ($request->input('image') && $request->input('image_placement') === 'None') {
+            $article->ImagePlacement = 'Left';
+        }
+
         $article->ImagePlacement = $request->input('image_placement');
+
         $article->NewsletterID = $request->input('newsletter_id'); // Retrieve the selected NewsletterID
         $article->save();
     
@@ -59,11 +71,24 @@ class ArticleController extends Controller
 
     public function update(Request $request, $id)
 {
+
+    $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'image' => 'required_if:image_placement,Left,Right',
+    ]);
+
+
     $article = Article::findOrFail($id);
     $article->Title = $request->input('title');
     $article->Description = $request->input('description');
-    $article->Image = $request->input('Image');
+    $article->Image = $request->input('image');
     $article->ImagePlacement = $request->input('image_placement');
+
+    if ($request->input('image') && $request->input('image_placement') === 'None') {
+        $article->ImagePlacement = 'Left';
+    }
+
     $article->NewsletterID = $request->input('newsletter_id');
     $article->save();
 
