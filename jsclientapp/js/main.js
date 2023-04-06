@@ -34,16 +34,42 @@ function renderNewsletters(newsletters) {
         const divContainer = document.createElement("div");
         divContainer.className = "card display-card";
 
+        const copyButton = document.createElement("button");
+
+        divContainer.appendChild(copyButton);
+
+        const newsletterContent = document.createElement("div");
+        newsletterContent.id = `card-${id}`
+        divContainer.appendChild(newsletterContent)
+
+        copyButton.textContent = "Copy";
+        copyButton.className = "btn btn-outline-primary copy-button";
+        copyButton.addEventListener("click", function() {
+            try {
+                const copyContent = document.querySelector(`#card-${id}`);
+                const range = document.createRange();
+                range.selectNodeContents(copyContent);
+                console.log(range)
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+                alert("Content copied to clipboard!");
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
         const section = document.createElement("section");
         section.className = "newsletter-info";
-        divContainer.appendChild(section);
+        newsletterContent.appendChild(section);
 
         const newsletterRow = document.createElement("div");
         newsletterRow.className = "row";
         section.appendChild(newsletterRow);
-        
+
         const newsletterTextDiv = document.createElement("div");
-        newsletterTextDiv.className = "col text-center";
+        newsletterTextDiv.className = "text-center col";
         newsletterRow.appendChild(newsletterTextDiv);
 
         const newsletterLogo = document.createElement("img");
@@ -60,7 +86,6 @@ function renderNewsletters(newsletters) {
         newsletterDate.textContent = `Newsletter #${articles[0].NewsletterID} - ${new Date(articles[0].Date).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'})}`;
         newsletterTextDiv.appendChild(newsletterDate);
 
-        body.appendChild(divContainer);
         for (let item of articles) {
             count++;
 
@@ -99,8 +124,9 @@ function renderNewsletters(newsletters) {
             const divDescription = document.createElement("div");
             divColumn.appendChild(divDescription);
             divDescription.innerHTML = item.Description;;
-            divContainer.appendChild(article);
+            newsletterContent.appendChild(article);
         }
+        body.appendChild(divContainer);
     }
 }
 

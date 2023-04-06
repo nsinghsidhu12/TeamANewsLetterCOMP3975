@@ -45,8 +45,8 @@
                 <td style="width: 5rem;">{{ $item->Title }}</td>
                 <td style="width: 30rem;">
                     @php
-                        if (!str_contains($item->Description, "<p>")) {
-                            $item->Description = "<p>" . $item->Description . "</p>";
+                        if (!str_contains($item->Description, '<p>')) {
+                            $item->Description = '<p>' . $item->Description . '</p>';
                         }
                         $limitedDescription = implode(' ', array_slice(explode(' ', $item->Description), 0, 50)); // Limit to 50 words
                     @endphp
@@ -63,7 +63,11 @@
                 <td class="text-center">
                     <a class="btn btn-info" href="{{ route('articles.show', $item->ArticleID) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('articles.edit', $item->ArticleID) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ route('articles.destroy', $item->ArticleID) }}">Del</a>
+                    <form style="display: contents;" action="{{ route('articles.destroy', $item->ArticleID) }}" method="GET">
+                        @csrf
+                        <a class="btn btn-danger" href="{{ route('articles.destroy', $item->ArticleID) }}"
+                            onclick="confirmDelete(event, {{ $item->ArticleID }})">Del</a>
+                    </form>
                 </td>
             </tr>
         @endforeach
@@ -71,4 +75,12 @@
     <div class="d-flex justify-content-center">
         {{ $articles->links() }}
     </div>
+    <script>
+        function confirmDelete(event, articleId) {
+            event.preventDefault(); // prevent the default form submission
+            if (confirm("Are you sure you want to delete the article with ID " + articleId + "?")) {
+                event.target.closest('form').submit(); // submit the form if user confirms
+            }
+        }
+    </script>
 @endsection
