@@ -30,6 +30,15 @@
                     <option value="right">Right</option>
                 </select>
             </div>
+            <!--dropdown list of newsletter names with their ids-->
+            <div class="form-group">
+                <label for="newsletter_id"><b>Newsletter</b></label>
+                <select class="form-control" id="newsletter_id" name="newsletter_id">
+                    @foreach ($newsletters as $newsletter)
+                        <option value="{{ $newsletter->NewsletterID }}">{{ $newsletter->Title }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <br />
         <div class='footer-btn'>

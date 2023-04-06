@@ -58,7 +58,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('articles/show/{ArticleID}', [ArticleController::class, 'show'])->name('articles.show');
     Route::get('articles/edit/{ArticleID}', [ArticleController::class, 'edit'])->name('articles.edit');
-    // Route::put('articles/update', [ArticleController::class, 'update'])->name('articles.update');
     Route::put('articles/update/{id}', [ArticleController::class, 'update'])->name('articles.update');
     Route::get('articles/destroy/{ArticleID}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 

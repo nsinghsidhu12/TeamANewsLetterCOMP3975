@@ -32,6 +32,15 @@
                     <option value="None" {{ $article->image_placement == 'None' ? 'selected' : '' }}>None</option>
                 </select>
             </div>
+            <!--dropdown list of newsletter names with their ids-->
+            <div class="form-group">
+                <label for="newsletter_id"><b>Newsletter</b></label>
+                <select class="form-control" id="newsletter_id" name="newsletter_id">
+                    @foreach ($newsletters as $newsletter)
+                        <option value="{{ $newsletter->NewsletterID }}">{{ $newsletter->Title }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <br />
         <div class='footer-btn'>
@@ -39,6 +48,8 @@
             <a class="cancel-btn btn btn-secondary" href="{{ URL::previous() }}">Cancel</a>
         </div>
     </form>
+
+
 
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/ztgkkghs4mn1mcsmskcw6swfmfh7i2sp3l11dwv2l0qsulbr/tinymce/6/tinymce.min.js"

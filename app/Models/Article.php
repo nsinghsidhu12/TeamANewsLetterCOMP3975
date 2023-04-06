@@ -83,4 +83,10 @@ class Article extends Model
             'Description' => $this->Description
         ];
     }
+    public function attachToNewsletter($newsletterId)
+{
+    $this->newsletter()->attach($newsletterId);
 }
+}
+
+
