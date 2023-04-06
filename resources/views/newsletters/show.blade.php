@@ -36,21 +36,21 @@
                                 <div class="float-end ps-4" style="width: 20%;">
                         @endif
                         <img src={{ $item->Image }} style="max-width: 100%;">
+                        @endif
+                    </div>
+                    <div>
+                        @php
+                            if (!str_contains($item->Description, '<p>')) {
+                                $item->Description = '<p>' . $item->Description . '</p>';
+                            }
+                        @endphp
+                        {!! html_entity_decode($item->Description) !!}
+                    </div>
                 </div>
-    @endif
-    <div>
-        @php
-            if (!str_contains($item->Description, '<p>')) {
-                $item->Description = '<p>' . $item->Description . '</p>';
-            }
-        @endphp
-        {!! html_entity_decode($item->Description) !!}
+            </section>
+        </article>
+    @endforeach
     </div>
-</div>
-</section>
-</article>
-@endforeach
-</div>
 
 <a style="margin-bottom: 2.5rem" class="mt-5 btn btn-primary" href="{{ URL::previous() }}">Back</a>
 

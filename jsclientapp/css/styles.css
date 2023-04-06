@@ -37,3 +37,8 @@ article {
         max-width: 40%;
     }
 }
+
+.copy-button {
+    width:fit-content;
+    align-self: end;
+}
