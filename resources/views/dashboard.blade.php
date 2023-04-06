@@ -50,7 +50,12 @@
                     </div>
         @endif
         <div>
-            <p>{{ $item->Description }}</p>
+            @php
+                if (!str_contains($item->Description, "<p>")) {
+                    $item->Description = "<p>" . $item->Description . "</p>";
+                }
+            @endphp
+            {!! html_entity_decode($item->Description) !!}
         </div>
     </div>
     </section>
