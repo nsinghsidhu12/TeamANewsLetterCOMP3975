@@ -38,7 +38,11 @@
                 <select class="form-control" id="newsletter_id" name="newsletter_id">
                     <option value="">None</option>
                     @foreach ($newsletters as $newsletter)
-                        <option value="{{ $newsletter->NewsletterID }}">{{ $newsletter->Title }}</option>
+                        @if ($newsletter->NewsletterID === $article->NewsletterID) 
+                            <option selected value="{{ $newsletter->NewsletterID }}">#{{ $newsletter->NewsletterID }} - {{ $newsletter->Title }}</option>
+                        @else
+                            <option value="{{ $newsletter->NewsletterID }}">#{{ $newsletter->NewsletterID }} - {{ $newsletter->Title }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>

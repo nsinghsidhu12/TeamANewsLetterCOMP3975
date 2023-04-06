@@ -22,8 +22,9 @@
                     </div>
                 </div>
             </section>
-        @break
-    @endforeach
+            @break
+        @endforeach
+
     @foreach ($newsletters as $item)
         <article>
             <h2 class="text-center">{{ $item->ArticleTitle }}</h2>
@@ -32,12 +33,12 @@
                     @if ($item->Image !== null)
                         @if ($item->ImagePlacement === 'Left')
                             <div class="float-start pe-4" style="width: 20%;">
-                            @elseif ($item->ImagePlacement === 'Right')
-                                <div class="float-end ps-4" style="width: 20%;">
+                        @elseif ($item->ImagePlacement === 'Right')
+                            <div class="float-end ps-4" style="width: 20%;">
                         @endif
                         <img src={{ $item->Image }} style="max-width: 100%;">
+                        </div>
                         @endif
-                    </div>
                     <div>
                         @php
                             if (!str_contains($item->Description, '<p>')) {

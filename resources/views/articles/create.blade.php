@@ -8,26 +8,26 @@
             <h2>Create Article</h2>
         </div>
     </div>
-    <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('articles.store') }}">
         @csrf
         <div class="card edit-card">
             <div class="form-group">
                 <label for="title"><b>Title:</b></label>
-                <input type="text" name="title" id="title" class="form-control" required>
+                <input type="text" name="title" id="title" class="form-control">
             </div>
             <div class="form-group">
                 <label for="description"><b>Description:</b></label>
-                <textarea name="description" id="description" class="form-control" required></textarea>
+                <textarea name="description" id="description" class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <label for="image"><b>Image-url:</b></label>
-                <input type="text" name="Image" id="Image" class="form-control-file" required>
+                <label for="image"><b>Image URL</b></label>
+                <input type="text" class="form-control" id="Image" name="Image">
             </div>
             <div class="form-group">
                 <label for="image_placement"><b>Image Placement:</b></label>
-                <select name="image_placement" id="image_placement" class="form-control" required>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
+                <select name="image_placement" id="image_placement" class="form-control">
+                    <option value="Left">Left</option>
+                    <option value="Right">Right</option>
                 </select>
             </div>
             <!--dropdown list of newsletter names with their ids-->
@@ -36,7 +36,7 @@
                 <select class="form-control" id="newsletter_id" name="newsletter_id">
                     <option value="">None</option>
                     @foreach ($newsletters as $newsletter)
-                        <option value="{{ $newsletter->NewsletterID }}">{{ $newsletter->Title }}</option>
+                        <option value="{{ $newsletter->NewsletterID }}">#{{ $newsletter->NewsletterID }} - {{ $newsletter->Title }}</option>
                     @endforeach
                 </select>
             </div>
