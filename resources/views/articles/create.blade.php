@@ -34,6 +34,7 @@
             <div class="form-group">
                 <label for="newsletter_id"><b>Newsletter</b></label>
                 <select class="form-control" id="newsletter_id" name="newsletter_id">
+                    <option value="">None</option>
                     @foreach ($newsletters as $newsletter)
                         <option value="{{ $newsletter->NewsletterID }}">{{ $newsletter->Title }}</option>
                     @endforeach
@@ -46,7 +47,6 @@
             <a class="cancel-btn btn btn-secondary" href="{{ URL::previous() }}">Cancel</a>
         </div>
     </form>
-
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/ztgkkghs4mn1mcsmskcw6swfmfh7i2sp3l11dwv2l0qsulbr/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>

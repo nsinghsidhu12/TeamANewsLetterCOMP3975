@@ -36,6 +36,7 @@
             <div class="form-group">
                 <label for="newsletter_id"><b>Newsletter</b></label>
                 <select class="form-control" id="newsletter_id" name="newsletter_id">
+                    <option value="">None</option>
                     @foreach ($newsletters as $newsletter)
                         <option value="{{ $newsletter->NewsletterID }}">{{ $newsletter->Title }}</option>
                     @endforeach
