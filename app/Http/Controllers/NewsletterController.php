@@ -88,7 +88,7 @@ class NewsletterController extends Controller
     public function edit($id)
     {
         $newsletter = Newsletter::findOrFail($id);
-        return view('newsletters.edit', compact('newsletter'));
+        return view('newsletters.edit', ["newsletter" => $newsletter, "url" => url()->previous()]);
     }
 
 
@@ -107,6 +107,10 @@ class NewsletterController extends Controller
         $newsletter->Logo = $request->get('Logo');
         $newsletter->save();
 
+        if ($request->input('url') && str_contains($request->input('url'), "search")) {
+            return redirect($request->input('url'))->with('success','Newsletter was updated successfully.');
+        }    
+
         return redirect('/newsletters')->with('success', 'Newsletter updated!');
     }
 
@@ -123,6 +127,10 @@ class NewsletterController extends Controller
             ->update(['NewsletterID' => null]);
 
             $newsletter->delete();
+        }
+
+        if (str_contains(url()->previous(), "search")) {
+            return redirect(url()->previous())->with('success', 'Newsletter deleted!');
         }
 
         return redirect('/newsletters')->with('success', 'Newsletter deleted!');

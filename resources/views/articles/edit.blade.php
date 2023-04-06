@@ -12,6 +12,7 @@
         @csrf
         @method('PUT')
         <div class="card edit-card">
+            <input type="hidden" name="url" value="{{ $url }}" />
             <div class="form-group">
                 <label for="title"><b>Title</b></label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ $article->Title }}">

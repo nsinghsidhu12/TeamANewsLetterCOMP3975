@@ -53,7 +53,8 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         $newsletters = Newsletter::all(['NewsletterID', 'Title']);
-        return view('articles.edit', compact('article', 'newsletters'));
+        $url= url()->previous();
+        return view('articles.edit', ["article" => $article, "newsletters" => $newsletters, "url" => $url]);
     }
 
     public function update(Request $request, $id)
@@ -66,17 +67,25 @@ class ArticleController extends Controller
     $article->NewsletterID = $request->input('newsletter_id');
     $article->save();
 
+    if ($request->input('url') && str_contains($request->input('url'), "search")) {
+        return redirect($request->input('url'))->with('success','Article was updated successfully.');
+    }
+
     return redirect()->route('articles.index')->with('success', 'Article was updated successfully.');
 }
 
     public function destroy($id): RedirectResponse
     {
         $article = Article::find($id); // find article by id(article id)
-        $article -> delete(); //implemented delete function
+        $article->delete(); //implemented delete function
+
+        if (str_contains(url()->previous(), "search")) {
+            return redirect(url()->previous())->with('success','Article was deleted successfully');
+        }
 
         // redirect to articles list
         return redirect() -> route('articles.index')
-        -> with('success','Articles was deleted successfully');
+        -> with('success','Article was deleted successfully');
     }
 }
 

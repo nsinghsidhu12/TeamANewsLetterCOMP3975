@@ -2,6 +2,11 @@
 
 @section('content')
 <h2>Search</h2>
+@if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+@endif
     @if ($newsletters)
         @if (count($newsletters) > 0)
             <h3>Newsletters Found</h3>
@@ -26,7 +31,12 @@
                             <td class="text-center">
                                 <a class="btn btn-info" href="{{ route('newsletters.show',$item->NewsletterID) }}">Show</a>
                                 <a class="btn btn-primary" href="{{ route('newsletters.edit',$item->NewsletterID) }}">Edit</a>
-                                <a class="btn btn-danger" href="{{ route('newsletters.destroy',$item->NewsletterID) }}">Del</a>
+                                <form style="display: contents;" action="{{ route('newsletters.destroy', $item->NewsletterID) }}"
+                                    method="GET">
+                                    @csrf
+                                    <a class="btn btn-danger" href="{{ route('newsletters.destroy', $item->NewsletterID) }}"
+                                        onclick="confirmDeleteNewsletter(event, {{ $item->NewsletterID }})">Del</a>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -82,7 +92,12 @@
                     <td class="text-center">
                         <a class="btn btn-info" href="{{ route('articles.show', $item->ArticleID) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('articles.edit', $item->ArticleID) }}">Edit</a>
-                        <a class="btn btn-danger" href="{{ route('articles.destroy', $item->ArticleID) }}">Del</a>
+                        <form style="display: contents;" action="{{ route('articles.destroy', $item->ArticleID) }}"
+                            method="GET">
+                            @csrf
+                            <a class="btn btn-danger" href="{{ route('articles.destroy', $item->ArticleID) }}"
+                                onclick="confirmDeleteArticle(event, {{ $item->ArticleID }})">Del</a>
+                        </form>
                     </td>
                 </tr>
             @endforeach
@@ -95,4 +110,19 @@
         @endif
     @endif
 </div>
+<script>
+    function confirmDeleteNewsletter(event, newsletterId) {
+        event.preventDefault(); // prevent the default form submission
+        if (confirm("Are you sure you want to delete the newsletter with ID " + newsletterId + "?")) {
+            event.target.closest('form').submit(); // submit the form if user confirms
+        }
+    }
+
+    function confirmDeleteArticle(event, articleID) {
+        event.preventDefault(); // prevent the default form submission
+        if (confirm("Are you sure you want to delete the article with ID " + articleID + "?")) {
+            event.target.closest('form').submit(); // submit the form if user confirms
+        }
+    }
+</script>
 @endsection
